@@ -1,20 +1,18 @@
 <?php
 
-
-/**  ╔══════════════════════════════════════════════════════════════════════════╗ 
-  *  ║ This file is part of EcoWebcontrol.                                      ║
-  *  ║ Copyright (c) 2013 the EcoWebcontrol Team (see authors).                 ║
-  *  ╠══════════════════════════════════════════════════════════════════════════╣ 
-  *  ║ For the full copyright and license information, please view the COPYING  ║
-  *  ║ file that was distributed with this source code. You can also view the   ║
-  *  ║ COPYING file online at http://files.froxlor.org/misc/COPYING.txt         ║
-  *  ║                                                                          ║
-  *  ║ @copyright  (c) the authors                                              ║
-  *  ║ @author     Jkoan <jkoan@eco-webcontrol.com>                             ║
-  *  ║ @license    GPLv2 http://files.froxlor.org/misc/COPYING.txt              ║
-  *  ║ @package    API                                                          ║
-  *  ╚══════════════════════════════════════════════════════════════════════════╝ 
-  */
+/**
+ * This file is part of the EcoWebcontrol project.
+ * Copyright (c) 2013 the EcoWebcontrol Team (see authors).
+ *
+ * For the full copyright and license information, please view the COPYING
+ * file that was distributed with this source code. You can also view the
+ * COPYING file online at http://eco-webcontrol.com/files/COPYING.txt
+ *
+ * @author     EcoWebcontrol team <team@eco-webcontrol.com> (2013)
+ * @license    GPLv2 http://eco-webcontrol.com/files/COPYING.txt
+ *
+ */
+ 
  define('AREA', 'admin');
  function generate_password($length){
                 $pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

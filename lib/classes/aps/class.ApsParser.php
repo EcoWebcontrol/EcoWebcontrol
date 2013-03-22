@@ -1,35 +1,21 @@
 <?php
 
 /**
- * Implementation of the Application Packaging Standard from SwSoft/Parallels
- * http://apsstandard.com
- *
- * This file is part of the Froxlor project.
+ * This file is part of the EcoWebcontrol project.
  * Copyright (c) 2003-2009 the SysCP Team (see authors).
- * Copyright (c) 2010 the Froxlor Team (see authors).
+ * Copyright (c) 2010 the Froxlor team (http://froxlor.org)
+ * Copyright (c) 2013 the EcoWebcontrol Team (see authors).
  *
  * For the full copyright and license information, please view the COPYING
  * file that was distributed with this source code. You can also view the
- * COPYING file online at http://files.froxlor.org/misc/COPYING.txt
+ * COPYING file online at http://eco-webcontrol.com/files/COPYING.txt
  *
  * @copyright  (c) the authors
- * @author     Florian Lippert <flo@syscp.org> (2003-2009)
- * @author     Froxlor team <team@froxlor.org> (2010-)
- * @license    GPLv2 http://files.froxlor.org/misc/COPYING.txt
- * @package    APS
+ * @author	   SysCP team
+ * @author     Froxlor team
+ * @author     EcoWebcontrol team <team@eco-webcontrol.com> (2013)
+ * @license    GPLv2 http://eco-webcontrol.com/files/COPYING.txt
  *
- * @todo		implement charset validation
- *				reconfigure
- *				patch- and versionmanagement
- *				use settings/userinfo array instead a copy of this vars
- *				remove locked packages
- *				replace all html code
- *				add https support
- *				multi language support (package localization)
- *				zip stuff in own class
- *				logging
- *				button for remove of all failed installations
- *				increse database counter for customer
  */
 
 class ApsParser
