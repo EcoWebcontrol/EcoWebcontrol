@@ -1,3 +1,2 @@
 EcoWebcontrol
-with Aptana
 =============
