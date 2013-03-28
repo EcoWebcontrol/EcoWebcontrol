@@ -86,7 +86,7 @@ if($page == 'overview')
 	$webserverinterface = strtoupper(@php_sapi_name());
 
 	
-		$update_check_uri = 'http://eco-webcontrol.com/version/version.php?version=' . $version;
+		$update_check_uri = 'http://eco-webcontrol.com/repo/version/version.php?version=' . $version;
 
 		if(ini_get('allow_url_fopen'))
 		{
