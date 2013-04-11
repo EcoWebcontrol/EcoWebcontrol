@@ -55,8 +55,21 @@ define('TABLE_PANEL_REDIRECTCODES', 'redirect_codes');
 define('TABLE_PANEL_DOMAINREDIRECTS', 'domain_redirect_codes');
 define('TABLE_PANEL_IPDOCROOTSETTINGS', 'ipsandports_docrootsettings');
 define('TABLE_PANEL_DOMDOCROOTSETTINGS', 'domain_docrootsettings');
-define('TABLE_API_KEY', 'api_key');
-define('TABLE_MULTISERVER', 'api_multiserver');
+define('TABLE_API_KEY', 'api_key'); //Tabel for new API-Key´s
+define('TABLE_MULTISERVER', 'api_multiserver'); //Table for new Multiserver
+
+
+/* +++ New Extensions Tables */
+define('THEMES', 'extensions_theme');
+define('PLUGINS', 'extensions_plugins');
+define('LANGUAGE', 'extensions_language');
+
+
+/* 
+ * 
+ * @TODO:Edit ewc.sql in /install with the new tabel structure
+ *  
+ * */
 
 // APS constants
 
