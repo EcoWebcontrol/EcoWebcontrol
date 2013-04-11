@@ -26,8 +26,8 @@
                 return $password;
         }
  
- require ("./lib/init.php");
-	 include './lib/userdata.inc.php';
+ 	require ("./lib/init.php");
+	include './lib/userdata.inc.php';
  
 	$db_link = mysql_connect ($sql['host'],$sql['user'],$sql['password']);
 	mysql_select_db($sql['db']);
