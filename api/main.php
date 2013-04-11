@@ -14,98 +14,149 @@
   *  ║ @package    API                                                          ║
   *  ╚══════════════════════════════════════════════════════════════════════════╝ 
   */
+  $Server = TRUE;
+  error_reporting(E_ALL);
+  if(get_magic_quotes_runtime())
+{
+	//Deactivate
+	set_magic_quotes_runtime(false);
+}
+
+/**
+ * Reverse magic_quotes_gpc=on to have clean GPC data again
+ */
+
+if(get_magic_quotes_gpc())
+{
+	$in = array(&$_GET, &$_POST, &$_COOKIE);
+
+	while(list($k, $v) = each($in))
+	{
+		foreach($v as $key => $val)
+		{
+			if(!is_array($val))
+			{
+				$in[$k][$key] = stripslashes($val);
+				continue;
+			}
+
+			$in[] = & $in[$k][$key];
+		}
+	}
+
+	unset($in);
+}
   
  
  header("Content-type: text/xml; charset=utf-8");
  echo "<?xml version=\"1.0\" encoding=\"utf-8\"?><api>"; 
- include '../lib/userdata.inc.php';
  include '../lib/tables.inc.php';
-				 include '../lib/classes/database/class.db.php';
+ include '../lib/classes/database/class.db.php';
 				 
 				
-				
-				
-						function includeFunctions($dirname)
-						{
-							$dirhandle = opendir($dirname);
-							while(false !== ($filename = readdir($dirhandle)))
-							{
-								if($filename != '.' && $filename != '..' && $filename != '')
-								{
-									if((substr($filename, 0, 9) == 'function.' || substr($filename, 0, 9) == 'constant.') && substr($filename, -4 ) == '.php')
-									{
-										include($dirname . $filename);
-										
-									}
-						
-									if(is_dir($dirname . $filename))
-									{
-										includeFunctions($dirname . $filename . '/');
-									}
-								}
-							}
-							closedir($dirhandle);
-						}
-				 
-						 function query_first($query)
-						 {
-						    $query = mysql_query($query);
-							$query = mysql_fetch_array($query);
-							return $query;
-						 }
-						 
-						 $libdirname = '/var/www/ewc/lib';
-				
-				
-				$libdirname = '/var/www/ewc/lib';
-				includeFunctions($libdirname . '/functions/');
-				 
-				$db_link = mysql_connect ($sql['host'],$sql['user'],$sql['password']);
-				unset($sql['password']);
+function findIncludeClass($dirname, $classname)
+{
+	$dirhandle = opendir($dirname);
+	while(false !== ($filename = readdir($dirhandle)))
+	{
+		if($filename != '.' && $filename != '..' && $filename != '')
+		{
+			if($filename == 'class.' . $classname . '.php' || $filename == 'abstract.' . $classname . '.php' || $filename == 'interface.' . $classname . '.php')
+			{
+				include($dirname . $filename);
+				return;
+			}
 
+			if(is_dir($dirname . $filename))
+			{
+				findIncludeClass($dirname . $filename . '/', $classname);
+			}
+		}
+	}
+	closedir($dirhandle);
+}				
+				
+function includeFunctions($dirname){
+		$dirhandle = opendir($dirname);
+		while(false !== ($filename = readdir($dirhandle))){
+			if($filename != '.' && $filename != '..' && $filename != ''){
+				if((substr($filename, 0, 9) == 'function.' || substr($filename, 0, 9) == 'constant.') && substr($filename, -4 ) == '.php'){
+					include($dirname . $filename);
+
+					
+				}
+		
+				if(is_dir($dirname . $filename)){
+					includeFunctions($dirname . $filename . '/');
+					}
+				}
+			}
+			closedir($dirhandle);
+	}
  
- $settings_data = loadConfigArrayDir('actions/admin/settings/');
-$settings = loadSettings($settings_data, $db_link);
- 
+ function query_first($query){
+    $query = mysql_query($query);
+	$query = mysql_fetch_array($query);
+	return $query;
+ }
+
+
+
+$libdirname = '/var/www/ewc/lib';
+includeFunctions($libdirname . '/functions/');
+findIncludeClass($libdirname . '/classes/', $classname);
+ include '../lib/userdata.inc.php';
+$db_link = mysql_connect ($sql['host'],$sql['user'],$sql['password']);
+unset($sql['password']);
+
 if ( $db_link )
 {
     mysql_select_db($sql['db']);
 	$key1 = $_POST['key1'];
 	$key2 = $_POST['key2'];
 	$funk = $_POST['funk'];
-	
-	$res = mysql_query("SELECT `user`,`allow` FROM `api_key` WHERE `key_1` = '".mysql_real_escape_string($key1)."' AND `key_2` = '".mysql_real_escape_string($key2)."'");
+	$res = "SELECT `user`,`allow` FROM `api_key` WHERE `key_1` = '".$key1."' AND `key_2` = '".$key2."'" ;
+	echo $res;
+	$res = mysql_query($res);
 	$res = mysql_fetch_array($res);
-	$query = 'SELECT * FROM `' . TABLE_PANEL_ADMINS . '` WHERE `loginname`="' . $res['user'] .'"';
-	$query = mysql_query($query);
-	
-	$userinfo = mysql_fetch_array($query);
-	
-	if ($res['allow'] == '0' OR '') {
-			echo "<error><code>No Access</code></error></api>";
-			exit;
+	echo $res['allow'];
+	if (isset($res['allow'])) {
+		echo "<detais>";
+		if ($res['allow'] == '0' OR '') {
+				echo "<error><code>No Access1</code></error></api>";
+				exit;
+			}
+		elseif ($res['allow'] == '1') {
+			echo '<user>Kunde</user>';
 		}
-	elseif ($res['allow'] == '1') {
-		echo '<user>Kunde</user>';
+		elseif ($res['allow'] == '2') {
+			echo '<user>Mail</user>';
+		}
+		elseif ($res['allow'] == '3') {
+			$userinfo = "SELECT * FROM `panel_admins` WHERE `loginname` = '".$res['user']."'";
+			$userinfo = query_first($userinfo);
+			echo '<user>'.$res['user'].'</user>';
+			echo "<allow>".$res['allow']."</allow>";
+			echo '<user>Reseller</user>';
+		}
+		elseif ($res['allow'] == '4') {
+			$userinfo = "SELECT * FROM `panel_admins` WHERE `loginname` = '".$res['user']."'";
+			$userinfo = query_first($userinfo);
+			echo '<user>'.$res['user'].'</user>';
+			echo "<allow>".$res['allow']."</allow>";
+		}
+		elseif ($res['allow'] == '10') {
+			echo '<user>Server</user>';
+		}
+		echo "</detais>";
 	}
-	elseif ($res['allow'] == '2') {
-		echo '<user>Mail</user>';
-	}
-	elseif ($res['allow'] == '3') {
-		echo '<user>Reseller</user>';
-	}
-	elseif ($res['allow'] == '4') {
-		echo '<user>Admin</user>';
-	}
-	elseif ($res['allow'] == '10') {
-		echo '<user>Server</user>';
-	}
+		
 	else {
-		echo "<error><code>No Access</code></error></api>";
+		echo "<error><code>No Access2</code></error></api>";
 		exit;
 	}
 	
-	if ($funk !='') {
+	if ($funk != '') {
 		echo '<funk>';
 		if ($res['allow'] == '1') {
 			include "./api_lib/customer.php";
@@ -116,6 +167,7 @@ if ( $db_link )
 		}
 		elseif ($res['allow'] == '3') {
 			include "./api_lib/reseller.php";
+			echo "<lib>"."api_lib/reseller.php"."</lib>";
 		}
 		elseif ($res['allow'] == '4') {
 			include "./api_lib/admin.php";
