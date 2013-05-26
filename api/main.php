@@ -116,14 +116,13 @@ if ( $db_link )
 	$key2 = $_POST['key2'];
 	$funk = $_POST['funk'];
 	$res = "SELECT `user`,`allow` FROM `api_key` WHERE `key_1` = '".$key1."' AND `key_2` = '".$key2."'" ;
-	echo $res;
 	$res = mysql_query($res);
 	$res = mysql_fetch_array($res);
 	echo $res['allow'];
 	if (isset($res['allow'])) {
 		echo "<detais>";
 		if ($res['allow'] == '0' OR '') {
-				echo "<error><code>No Access1</code></error></api>";
+				echo "<error><code>No Access</code></error></api>";
 				exit;
 			}
 		elseif ($res['allow'] == '1') {
@@ -152,7 +151,7 @@ if ( $db_link )
 	}
 		
 	else {
-		echo "<error><code>No Access2</code></error></api>";
+		echo "<error><code>No Access</code></error></api>";
 		exit;
 	}
 	

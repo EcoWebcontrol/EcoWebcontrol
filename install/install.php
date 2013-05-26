@@ -131,7 +131,7 @@ function page_footer() {
 </div>
 <footer>
 	<span>
-		EWC &copy; <?php echo date('Y', time()); ?> by <a href="http://www.ech-webcontrol.com/" rel="external">the EWC Team</a>
+		EWC &copy; <?php echo date('Y', time()); ?> by <a href="http://www.eco-webcontrol.com/" rel="external">the EWC Team</a>
 	</span>
 </footer>
 </body>

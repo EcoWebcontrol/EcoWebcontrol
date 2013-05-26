@@ -103,7 +103,7 @@ if(isset($sql['root_user']) && isset($sql['root_password']) && (!isset($sql_root
 /**
  * Includes the Functions
  */
-
+ 
 require ('lib/functions.php');
 
 /**
@@ -270,7 +270,7 @@ $languages = array();
 $iso = array();
 
 // query the whole table
-$query = 'SELECT * FROM `' . TABLE_PANEL_LANGUAGE . '` ';
+$query = 'SELECT * FROM `' . TABLE_PANEL_LANGUAGE . '` WHERE active=1 ';
 $result = $db->query($query);
 
 // presort languages

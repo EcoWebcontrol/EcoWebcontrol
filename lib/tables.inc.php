@@ -60,7 +60,7 @@ define('TABLE_MULTISERVER', 'api_multiserver'); //Table for new Multiserver
 
 
 /* +++ New Extensions Tables */
-define('THEMES', 'extensions_theme');
+define('THEMES', 'extensions_theme'); //Tabel for new Design management
 define('PLUGINS', 'extensions_plugins');
 define('LANGUAGE', 'extensions_language');
 
