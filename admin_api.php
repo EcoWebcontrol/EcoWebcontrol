@@ -14,6 +14,7 @@
  */
  
  define('AREA', 'admin');
+ $need_db_sql_data = true;
  function generate_password($length){
                 $pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
                 $pool .= "abcdefghijklmnopqrstuvwxyz";
@@ -28,16 +29,13 @@
  
  	require ("./lib/init.php");
 	include './lib/userdata.inc.php';
- 
-	$db_link = mysql_connect ($sql['host'],$sql['user'],$sql['password']);
-	mysql_select_db($sql['db']);
 	
 	$page = $_GET['page'];
 	if ($page == 'key') {
 		if ($action == 'add') {
 			
 				$sql = "INSERT INTO `".TABLE_API_KEY."` (`key_1`, `key_2`, `user`, `allow`) VALUES ('".generate_password('40')."', '".generate_password('40')."', '123', '1');";
-				$result = mysql_query($sql);
+				$result = $db->query($sql);
 				standard_success('passwordok');
 				
 			}
