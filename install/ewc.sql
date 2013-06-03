@@ -42,7 +42,7 @@ CREATE TABLE `extensions_theme` (
 
 ) ENGINE=MyISAM CHARSET=utf8 COLLATE=utf8_general_ci;
 
-INSERT INTO `panel_settings` (`name`, `active`, `view`) VALUES
+INSERT INTO `extensions_theme` (`name`, `active`, `view`) VALUES
 
 	('EWC', '1', '2');
 

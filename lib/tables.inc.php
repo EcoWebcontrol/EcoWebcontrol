@@ -61,8 +61,13 @@ define('TABLE_MULTISERVER', 'api_multiserver'); //Table for new Multiserver
 
 /* +++ New Extensions Tables */
 define('THEMES', 'extensions_theme'); //Tabel for new Design management
-define('PLUGINS', 'extensions_plugins');
+
+/*
+//not in install.sql at this moment
+define('PLUGINS', 'extensions_plugins'); 
 define('LANGUAGE', 'extensions_language');
+ 
+*/
 
 
 /* 
@@ -89,6 +94,6 @@ define('PACKAGE_ENABLED', 2);
 
 // VERSION INFO
 
-$version = '0.0.1';
+$version = '0.0.2';
 $dbversion = '2';
-$branding = '-Alpha';
+$branding = ' under Testing';
