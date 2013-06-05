@@ -1320,17 +1320,11 @@ CREATE TABLE `panel_languages` (
 
   `file` varchar(255) NOT NULL DEFAULT '',
   
-  `active` int(11),
+  `active` int(1),
 
   PRIMARY KEY  (`id`)
 
 ) ENGINE=MyISAM CHARSET=utf8 COLLATE=utf8_general_ci;
-
-
-
-
-
-
 
 INSERT INTO `panel_languages` (`id`, `language`, `iso`, `file`, `active`) VALUES
 
@@ -1338,35 +1332,35 @@ INSERT INTO `panel_languages` (`id`, `language`, `iso`, `file`, `active`) VALUES
 
     (2, 'English', 'en', 'lng/english.lng.php', '1'),
 
-    (3, 'Français', 'fr', 'lng/french.lng.php' '0'),
+    (3, 'Français', 'fr', 'lng/french.lng.php', '0'),
 
-    (4, 'Chinese', 'zh', 'lng/zh-cn.lng.php' '0'),
+    (4, 'Chinese', 'zh', 'lng/zh-cn.lng.php', '0'),
 
-    (5, 'Catalan', 'ca', 'lng/catalan.lng.php' '0'),
+    (5, 'Catalan', 'ca', 'lng/catalan.lng.php', '0'),
 
-    (6, 'Espa&ntilde;ol', 'es', 'lng/spanish.lng.php' '0'),
+    (6, 'Espa&ntilde;ol', 'es', 'lng/spanish.lng.php', '0'),
 
-    (7, 'Portugu&ecirc;s', 'pt', 'lng/portugues.lng.php' '0'),
+    (7, 'Portugu&ecirc;s', 'pt', 'lng/portugues.lng.php', '0'),
 
-    (8, 'Russian', 'ru', 'lng/russian.lng.php' '0'),
+    (8, 'Russian', 'ru', 'lng/russian.lng.php', '0'),
 
-    (9, 'Danish', 'da', 'lng/danish.lng.php' '0'),
+    (9, 'Danish', 'da', 'lng/danish.lng.php', '0'),
 
-    (10, 'Italian', 'it', 'lng/italian.lng.php' '0'),
+    (10, 'Italian', 'it', 'lng/italian.lng.php', '0'),
 
-    (11, 'Bulgarian', 'bg', 'lng/bulgarian.lng.php' '0'),
+    (11, 'Bulgarian', 'bg', 'lng/bulgarian.lng.php', '0'),
 
-    (12, 'Slovak', 'sk', 'lng/slovak.lng.php' '0'),
+    (12, 'Slovak', 'sk', 'lng/slovak.lng.php', '0'),
 
-    (13, 'Dutch', 'nl', 'lng/dutch.lng.php' '0'),
+    (13, 'Dutch', 'nl', 'lng/dutch.lng.php', '0'),
 
-    (14, 'Hungarian', 'hu', 'lng/hungarian.lng.php' '0'),
+    (14, 'Hungarian', 'hu', 'lng/hungarian.lng.php', '0'),
 
-    (15, 'Swedish', 'sv', 'lng/swedish.lng.php' '0'),
+    (15, 'Swedish', 'sv', 'lng/swedish.lng.php', '0'),
 
-    (16, 'Czech', 'cz', 'lng/czech.lng.php' '0'),
+    (16, 'Czech', 'cz', 'lng/czech.lng.php', '0'),
 
-    (17, 'Polski', 'pl', 'lng/polish.lng.php' '0');
+    (17, 'Polski', 'pl', 'lng/polish.lng.php', '0');
 
 
 

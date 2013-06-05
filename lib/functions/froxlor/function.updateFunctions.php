@@ -15,7 +15,29 @@
  *
  */
 
-/*
+ 
+ 
+ /*
+ * Function isEWC
+ *
+ * checks if the panel is EWC
+ *
+ * @return	bool		true if panel is EWC, else false
+ */
+function isEWC()
+{
+	global $settings, $theme;
+
+	if(isset($settings['panel']['frontend'])
+	&& $settings['panel']['frontend'] == 'ewc')
+	{
+		return true;
+	}
+	return false;
+}
+  
+
+ /*
  * Function updateToVersion
  *
  * updates the panel.version field
