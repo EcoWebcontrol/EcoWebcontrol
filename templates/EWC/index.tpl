@@ -49,7 +49,7 @@
                 {if ($settings.admin.show_version_login == '1' && $loggedin == 0) || ($settings.admin.show_version_footer == '1' && $loggedin == 1)}
                     {$version}{$branding}
                 {/if}
-                &copy; {$current_year} by <a href="http://www.froxlor.org/" rel="external">{t}the EWC Team{/t}</a>
+                &copy; {$current_year} by <a href="http://www.eco-webcontrol.com/" rel="external">{t}the EWC Team{/t}</a>
             </span>
         </footer>
 

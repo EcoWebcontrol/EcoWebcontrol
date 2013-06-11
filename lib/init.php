@@ -134,6 +134,24 @@ if(!isset($need_root_db_sql_data) || $need_root_db_sql_data !== true)
 	$sql_root = array();
 }
 
+if(is_array($need_ssh) || $need_ssh['use'] == true)
+{
+	if (isset($need_ssh['host']) and $need_ssh['host'] != 'localhost' and $need_shh['user'] != '' and $need_ssh['password'] != '') {
+		$open_ssh['session'] = ssh2_connect($need_ssh['host'], 22);
+		ssh2_auth_password($open_ssh['session'], 'username', 'password');
+		unset($open_ssh['password']);
+		unset($open_ssh['user']);
+	}
+	else {
+		$open_ssh['session'] = ssh2_connect('localhost', 22);
+		ssh2_auth_password($open_ssh['session'], 'username', 'password');
+	}	
+}
+else {
+	unset($need_ssh);
+	$open_ssh['session'] = FALSE;
+}
+
 /**
  * Create a new idna converter
  */
