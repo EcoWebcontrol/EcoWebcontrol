@@ -1,3 +1,13 @@
+DROP TABLE IF EXISTS `game_server`;
+CREATE TABLE  `game_server` (
+  `owner` text NOT NULL,
+  `serverid` int(11) NOT NULL,
+  `game` text NOT NULL,
+  `start` text NOT NULL,
+  `para` text NOT NULL
+) ENGINE=MyISAM CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
 DROP TABLE IF EXISTS `api_multiserver`;
 
 CREATE TABLE `api_multiserver` (
