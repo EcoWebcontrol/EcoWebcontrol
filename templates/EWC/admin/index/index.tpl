@@ -140,22 +140,35 @@ $header
 			<td width="50%">{$lng['admin']['installedversion']}:</td>
 			<td>{$version}{$branding}</td>
 		</tr>
-		<tr>
-			<td>{$lng['admin']['latestversion']}:</td>
-			<if $isnewerversion != 0 >
-				<td><a href="$lookfornewversion_link"><strong>$lookfornewversion_lable</strong></a></td>
-			<else>
-				<td><a href="$lookfornewversion_link">$lookfornewversion_lable</a></td>
-			</if>
-		</tr>
-		<if $isnewerversion != 0 >
-		<tr>
-			<td colspan="2"><strong>{$lng['admin']['newerversionavailable']}</strong></td>
-		</tr>
-			<if $lookfornewversion_addinfo != ''>
+		
+		<if $updateserveroffline = 'true'>
 			<tr>
-				<td colspan="2">$lookfornewversion_addinfo</td>
+				<td>{$lng['admin']['latestversion']}:</td>
+					<td>-</td>
 			</tr>
+			
+			<tr>
+				<td colspan="2"><strong>{$lng['error']['updateserveroffline']}</strong></td>
+			</tr>
+			
+		<else>
+			<tr>
+				<td>{$lng['admin']['latestversion']}:</td>
+				<if $isnewerversion != 0 >
+					<td><a href="$lookfornewversion_link"><strong>$lookfornewversion_lable</strong></a></td>
+				<else>
+					<td><a href="$lookfornewversion_link">$lookfornewversion_lable</a></td>
+				</if>
+			</tr>
+			<if $isnewerversion != 0 >
+			<tr>
+				<td colspan="2"><strong>{$lng['admin']['newerversionavailable']}</strong></td>
+			</tr>
+				<if $lookfornewversion_addinfo != ''>
+				<tr>
+					<td colspan="2">$lookfornewversion_addinfo</td>
+				</tr>
+				</if>
 			</if>
 		</if>
 		</table>

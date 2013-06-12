@@ -85,50 +85,54 @@ if($page == 'overview')
 	$mysqlclientversion = mysql_get_client_info();
 	$webserverinterface = strtoupper(@php_sapi_name());
 
-	/*TODO: IF the Server is offline, we can´t connect to the EWC-Panel 
+
 		$update_check_uri = 'http://eco-webcontrol.com/repo/version/version.php?version=' . $version;
 
 		if(ini_get('allow_url_fopen'))
 		{
-			$latestversion = @file($update_check_uri);
+			if(fopen($update_check_uri, r) != FALSE) {
+				
+				$latestversion = @file($update_check_uri);
 
-			if (isset($latestversion[0]))
-			{
-				$latestversion = explode('|', $latestversion[0]);
-
-				if(is_array($latestversion)
-				&& count($latestversion) >= 1)
+				if (isset($latestversion[0]))
 				{
-					$_version = $latestversion[0];
-					$_message = isset($latestversion[1]) ? $latestversion[1] : '';
-					$_link = isset($latestversion[2]) ? $latestversion[2] : htmlspecialchars($filename . '?s=' . urlencode($s) . '&page=' . urlencode($page) . '&lookfornewversion=yes');
+					$latestversion = explode('|', $latestversion[0]);
 
-					$lookfornewversion_lable = $_version;
-					$lookfornewversion_link = $_link;
-					$lookfornewversion_addinfo = $_message;
+					if(is_array($latestversion)
+					&& count($latestversion) >= 1)
+					{
+						$_version = $latestversion[0];
+						$_message = isset($latestversion[1]) ? $latestversion[1] : '';
+						$_link = isset($latestversion[2]) ? $latestversion[2] : htmlspecialchars($filename . '?s=' . urlencode($s) . '&page=' . urlencode($page) . '&lookfornewversion=yes');
 
-					if (version_compare($version, $_version) == -1) {
-						$isnewerversion = 1;
-					} else {
-						$isnewerversion = 0;
+						$lookfornewversion_lable = $_version;
+						$lookfornewversion_link = $_link;
+						$lookfornewversion_addinfo = $_message;
+
+						if (version_compare($version, $_version) == -1) {
+							$isnewerversion = 1;
+						} else {
+							$isnewerversion = 0;
+						}
 					}
-				}
-				else
-										
-				{
-					redirectTo($update_check_uri.'/pretty', NULL);
-				}
-			}
-			else
-			{
+					else {
+						redirectTo($update_check_uri.'/pretty', NULL);
+					}
+					}			
+			else {
 				redirectTo($update_check_uri.'/pretty', NULL);
 			}
+			}
+			else {
+				$updateserveroffline = "true"
+			}
 		}
-		else
-		{
+		else {
 			redirectTo($update_check_uri.'/pretty', NULL);
 		}
-*/
+		
+	}
+
 	$userinfo['diskspace'] = round($userinfo['diskspace'] / 1024, $settings['panel']['decimal_places']);
 	$userinfo['diskspace_used'] = round($userinfo['diskspace_used'] / 1024, $settings['panel']['decimal_places']);
 	$userinfo['traffic'] = round($userinfo['traffic'] / (1024 * 1024), $settings['panel']['decimal_places']);
