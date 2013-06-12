@@ -16,7 +16,7 @@
     <if isset($userinfo['loginname'])>
     
         <div class="navbar navbar-fixed-top">
-            <a href="{$completeLink['url']}" class="brand"><img src="templates/EWC/assets/img/alpha.gif" /></a>
+            <a href="{$index_url}" class="brand"><img src="templates/EWC/assets/img/alpha.gif" /></a>
             <div class="navbar-inner">
                 <div class="container">
                 	<div class="nav-collapse">

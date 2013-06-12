@@ -365,6 +365,7 @@ if($language != 'English')
 // Initialize our new link - class
 
 $linker = new linker('index.php', $s);
+$index_url = AREA.'_index.php?s='.$s;
 
 /**
  * global Theme-variable
