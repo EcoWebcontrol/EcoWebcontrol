@@ -31,10 +31,7 @@ html, body
 .navbar .brand img
 {
 	width: 260px;
-<<<<<<< HEAD
 	margin-left: 10px;
-=======
->>>>>>> dbcd4657fc400fbb25400038fccdf0cc2ce4a173
 	height:	43px;
 	background: transparent url('../img/logo_header.png') no-repeat center;
 	float: right;
