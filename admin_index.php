@@ -85,7 +85,7 @@ if($page == 'overview')
 	$mysqlclientversion = mysql_get_client_info();
 	$webserverinterface = strtoupper(@php_sapi_name());
 
-	/*
+	/*TODO: IF the Server is offline, we can´t connect to the EWC-Panel 
 		$update_check_uri = 'http://eco-webcontrol.com/repo/version/version.php?version=' . $version;
 
 		if(ini_get('allow_url_fopen'))
@@ -128,7 +128,7 @@ if($page == 'overview')
 		{
 			redirectTo($update_check_uri.'/pretty', NULL);
 		}
-*/$isnewerversion = 0;
+*/
 	$userinfo['diskspace'] = round($userinfo['diskspace'] / 1024, $settings['panel']['decimal_places']);
 	$userinfo['diskspace_used'] = round($userinfo['diskspace_used'] / 1024, $settings['panel']['decimal_places']);
 	$userinfo['traffic'] = round($userinfo['traffic'] / (1024 * 1024), $settings['panel']['decimal_places']);
