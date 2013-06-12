@@ -1,18 +1,20 @@
 <?php
 
 /**
- * This file is part of the Froxlor project.
+ * This file is part of the EcoWebcontrol project.
  * Copyright (c) 2003-2009 the SysCP Team (see authors).
- * Copyright (c) 2010 the Froxlor Team (see authors).
- *
+ * Copyright (c) 2010 the EcoWebcontrol Team (see authors).
+ * Copyright (c) 2013 the EcoWebcontrol Team (see authors).
+ * 
  * For the full copyright and license information, please view the COPYING
  * file that was distributed with this source code. You can also view the
- * COPYING file online at http://files.froxlor.org/misc/COPYING.txt
+ * COPYING file online at http://eco-webcontrol.com/files/COPYING.txt
  *
  * @copyright  (c) the authors
  * @author     Florian Lippert <flo@syscp.org> (2003-2009)
- * @author     Froxlor team <team@froxlor.org> (2010-)
- * @license    GPLv2 http://files.froxlor.org/misc/COPYING.txt
+ * @author     EcoWebcontrol team <team@EcoWebcontrol.org> (2010-2013)
+ * @author	   EcoWebcontrol Team <team@eco-webcontrol.com> (2013-)
+ * @license    GPLv2 http://eco-webcontrol.com/files/COPYING.txt
  * @package    Language
  *
  */
@@ -107,9 +109,9 @@ $lng['index']['accountdetails'] = 'Kontodaten';
 
 $lng['changepassword']['old_password'] = 'Altes Passwort';
 $lng['changepassword']['new_password'] = 'Neues Passwort';
-$lng['changepassword']['new_password_confirm'] = 'Neues Passwort (bestätigen)';
-$lng['changepassword']['new_password_ifnotempty'] = 'Neues Passwort (leer = nicht ändern)';
-$lng['changepassword']['also_change_ftp'] = 'Auch Passwort vom Haupt-FTP-Zugang ändern';
+$lng['changepassword']['new_password_confirm'] = 'Neues Passwort bestätigen';
+$lng['changepassword']['new_password_ifnotempty'] = 'Neues Passwort (leer = k)';
+$lng['changepassword']['also_change_ftp'] = 'Auch Passwort des Standard-FTP-Zugangs ändern';
 
 /**
  * Domains
@@ -171,10 +173,10 @@ $lng['extras']['error404path'] = '404';
 $lng['extras']['error403path'] = '403';
 $lng['extras']['error500path'] = '500';
 $lng['extras']['error401path'] = '401';
-$lng['extras']['errordocument404path'] = 'Fehlerdokument 404';
-$lng['extras']['errordocument403path'] = 'Fehlerdokument 403';
-$lng['extras']['errordocument500path'] = 'Fehlerdokument 500';
-$lng['extras']['errordocument401path'] = 'Fehlerdokument 401';
+$lng['extras']['errordocument404path'] = 'eigenes Fehlerdokument 404 (Datei nicht gefunden)';
+$lng['extras']['errordocument403path'] = 'eigenes Fehlerdokument 403 (Zugriff nicht möglich (z.B. bei fehlender Index-Seite))';
+$lng['extras']['errordocument500path'] = 'eigenes Fehlerdokument 500 (Interner Serverfehler)';
+$lng['extras']['errordocument401path'] = 'eigenes Fehlerdokument 401 (Zugriff verweigert, meist bei Passwortschutz)';
 
 /**
  * Errors
@@ -277,7 +279,7 @@ $lng['mails']['createcustomer']['subject'] = 'Kontoinformationen';
 $lng['admin']['overview'] = 'Übersicht';
 $lng['admin']['ressourcedetails'] = 'Verbrauchte Ressourcen';
 $lng['admin']['systemdetails'] = 'Systemdetails';
-$lng['admin']['froxlordetails'] = 'Froxlor-Details';
+$lng['admin']['EcoWebcontroldetails'] = 'EcoWebcontrol-Details';
 $lng['admin']['installedversion'] = 'Installierte Version';
 $lng['admin']['latestversion'] = 'Neueste Version';
 $lng['admin']['lookfornewversion']['clickhere'] = 'per Webservice abfragen';
@@ -519,7 +521,7 @@ $lng['changepassword']['also_change_webalizer'] = ' Auch Passwort vom Webalizer 
 // ADDED IN 1.2.16-svn8
 
 $lng['serversettings']['mailpwcleartext']['title'] = 'Passwörter der Mail-Konten auch im Klartext in der Datenbank speichern';
-$lng['serversettings']['mailpwcleartext']['description'] = 'Wenn diese Einstellung auf Ja gesetzt wird, werden alle Passwörter auch unverschlüsselt (also im Klartext, für jeden mit Zugriff auf die Froxlor-Datenbank sofort lesbar) in der mail_users-Tabelle gespeichert. Aktivieren Sie diese Option nur dann, wenn Sie SASL nutzen!';
+$lng['serversettings']['mailpwcleartext']['description'] = 'Wenn diese Einstellung auf Ja gesetzt wird, werden alle Passwörter auch unverschlüsselt (also im Klartext, für jeden mit Zugriff auf die EcoWebcontrol-Datenbank sofort lesbar) in der mail_users-Tabelle gespeichert. Aktivieren Sie diese Option nur dann, wenn Sie SASL nutzen!';
 $lng['serversettings']['mailpwcleartext']['removelink'] = 'Klicken Sie hier, um alle unverschlüsselten Passwörter aus der Tabelle zu entfernen.';
 $lng['question']['admin_cleartextmailpws_reallywipe'] = 'Wollen Sie wirklich alle unverschlüsselten Passwörter aus der Tabelle mail_users entfernen? Dieser Schritt kann nicht rückgängig gemacht werden!';
 $lng['admin']['configfiles']['overview'] = 'Übersicht';
@@ -548,7 +550,7 @@ $lng['panel']['back'] = 'Zurück';
 $lng['serversettings']['mod_log_sql']['title'] = 'Logs in Datenbank zwischenspeichern';
 $lng['serversettings']['mod_log_sql']['description'] = '<a target="blank" href="http://www.outoforder.cc/projects/apache/mod_log_sql/" title="mod_log_sql">mod_log_sql</a> benutzen um die Webzugriffe temporär zu speichern<br /><b>Dies benötigt eine spezielle Apache-Konfiguration</b>';
 $lng['serversettings']['mod_fcgid']['title'] = 'PHP über mod_fcgid/suexec einbinden';
-$lng['serversettings']['mod_fcgid']['description'] = 'PHP unter dem jeweiligen Useraccount laufen lassen.<br /><br /><b>Dies benötigt eine spezielle Webserver-Konfiguration für Apache, siehe <a target="blank" href="http://redmine.froxlor.org/projects/froxlor/wiki/FCGID_-_Handbuch">FCGID-Handbuch</a>.</b>';
+$lng['serversettings']['mod_fcgid']['description'] = 'PHP unter dem jeweiligen Useraccount laufen lassen.<br /><br /><b>Dies benötigt eine spezielle Webserver-Konfiguration für Apache, siehe <a target="blank" href="http://redmine.EcoWebcontrol.org/projects/EcoWebcontrol/wiki/FCGID_-_Handbuch">FCGID-Handbuch</a>.</b>';
 $lng['serversettings']['sendalternativemail']['title'] = 'Alternative E-Mail-Adresse benutzen';
 $lng['serversettings']['sendalternativemail']['description'] = 'Während des Erstellens eines Accounts das Passwort an eine andere E-Mail-Adresse senden';
 $lng['emails']['alternative_emailaddress'] = 'Alternative E-Mail-Adresse';
@@ -578,7 +580,7 @@ $lng['serversettings']['mysql_access_host']['description'] = 'Eine durch Komma g
 
 // CHANGED IN 1.2.18
 
-$lng['serversettings']['mod_log_sql']['description'] = '<a target="blank" href="http://www.outoforder.cc/projects/apache/mod_log_sql/" title="mod_log_sql">mod_log_sql</a> benutzen um die Webzugriffe temporär zu speichern<br /><b>Dies benötigt eine spezielle <a target="blank" href="http://files.froxlor.org/docs/mod_log_sql/" title="mod_log_sql - Dokumentation">Apache-Konfiguration</a></b>';
+$lng['serversettings']['mod_log_sql']['description'] = '<a target="blank" href="http://www.outoforder.cc/projects/apache/mod_log_sql/" title="mod_log_sql">mod_log_sql</a> benutzen um die Webzugriffe temporär zu speichern<br /><b>Dies benötigt eine spezielle <a target="blank" href="http://files.EcoWebcontrol.org/docs/mod_log_sql/" title="mod_log_sql - Dokumentation">Apache-Konfiguration</a></b>';
 
 // ADDED IN 1.2.18-svn1
 
@@ -599,7 +601,7 @@ $lng['serversettings']['webalizer_quiet']['description'] = 'Ausgabefreudigkeit d
 // ADDED IN 1.2.18-svn3
 
 $lng['ticket']['admin_email'] = 'root@localhost';
-$lng['ticket']['noreply_email'] = 'tickets@froxlor';
+$lng['ticket']['noreply_email'] = 'tickets@EcoWebcontrol';
 $lng['admin']['ticketsystem'] = 'Support-Tickets';
 $lng['menue']['ticket']['ticket'] = 'Support Tickets';
 $lng['menue']['ticket']['categories'] = 'Support Kategorien';
@@ -748,7 +750,7 @@ $lng['traffic']['summail'] = 'Summe Mail-Traffic in';
 
 // ADDED IN 1.2.19-svn4.5
 
-$lng['serversettings']['no_robots']['title'] = 'Erlaube die Indizierung Ihres Froxlor durch Suchmaschinen';
+$lng['serversettings']['no_robots']['title'] = 'Erlaube die Indizierung Ihres EcoWebcontrol durch Suchmaschinen';
 
 // ADDED IN 1.2.19-svn6
 
@@ -869,8 +871,8 @@ $lng['login']['presend'] = 'Passwort zurücksetzen';
 $lng['login']['email'] = 'E-Mail Adresse';
 $lng['login']['remind'] = 'Passwort zurücksetzen';
 $lng['login']['usernotfound'] = 'Fehler: Unbekannter Benutzer!';
-$lng['pwdreminder']['subject'] = 'Froxlor - Passwort zurückgesetzt';
-$lng['pwdreminder']['body'] = 'Hallo %s,\n\nIhr Froxlor Passwort wurde zurückgesetzt!\nDas neue Passwort lautet: %p\n\nVielen Dank,\nIhr Administrator';
+$lng['pwdreminder']['subject'] = 'EcoWebcontrol - Passwort zurückgesetzt';
+$lng['pwdreminder']['body'] = 'Hallo %s,\n\nIhr EcoWebcontrol Passwort wurde zurückgesetzt!\nDas neue Passwort lautet: %p\n\nVielen Dank,\nIhr Administrator';
 $lng['pwdreminder']['success'] = 'Passwort erfolgreich zurückgesetzt.<br />Sie sollten nun eine E-Mail mit dem neuen Passwort erhalten.';
 
 // ADDED IN 1.2.19-svn18
@@ -896,7 +898,7 @@ $lng['panel']['never'] = 'Nie';
 $lng['panel']['active'] = 'Aktiv';
 $lng['panel']['please_choose'] = 'Bitte auswählen';
 $lng['panel']['allow_modifications'] = 'Änderungen zulassen';
-$lng['domains']['add_date'] = 'Zu Froxlor hinzugefügt';
+$lng['domains']['add_date'] = 'Zu EcoWebcontrol hinzugefügt';
 $lng['domains']['registration_date'] = 'Bei Registry hinzugefügt';
 $lng['domains']['topleveldomain'] = 'Top-Level-Domain';
 
@@ -949,14 +951,14 @@ $lng['error']['autoresponderalreadyexists'] = 'Für dieses Konto existiert berei
 $lng['error']['invalidautoresponder'] = 'Das angegebene Konto ist ungültig.';
 $lng['serversettings']['autoresponder_active']['title'] = 'Abwesenheitsnachrichten-Modul verwenden';
 $lng['serversettings']['autoresponder_active']['description'] = 'Möchten Sie das Abwesenheitsnachrichten-Modul verwenden?';
-$lng['admin']['show_version_login']['title'] = 'Zeige Froxlor Version beim Login';
-$lng['admin']['show_version_login']['description'] = 'Zeige Froxlor Version in der Fußzeile der Loginseite';
-$lng['admin']['show_version_footer']['title'] = 'Zeige Froxlor Version in Fußzeile';
-$lng['admin']['show_version_footer']['description'] = 'Zeige Froxlor Version in der Fußzeile aller anderen Seiten';
-$lng['admin']['froxlor_graphic']['title'] = 'Grafik im Kopfbereich des Panels';
-$lng['admin']['froxlor_graphic']['description'] = 'Welche Grafik soll im Kopfbereich des Panels anstatt des Froxlor Logos angezeigt werden?';
+$lng['admin']['show_version_login']['title'] = 'Zeige EcoWebcontrol Version beim Login';
+$lng['admin']['show_version_login']['description'] = 'Zeige EcoWebcontrol Version in der Fußzeile der Loginseite';
+$lng['admin']['show_version_footer']['title'] = 'Zeige EcoWebcontrol Version in Fußzeile';
+$lng['admin']['show_version_footer']['description'] = 'Zeige EcoWebcontrol Version in der Fußzeile aller anderen Seiten';
+$lng['admin']['EcoWebcontrol_graphic']['title'] = 'Grafik im Kopfbereich des Panels';
+$lng['admin']['EcoWebcontrol_graphic']['description'] = 'Welche Grafik soll im Kopfbereich des Panels anstatt des EcoWebcontrol Logos angezeigt werden?';
 
-//improved froxlor
+//improved EcoWebcontrol
 
 $lng['menue']['phpsettings']['maintitle'] = 'PHP Konfigurationen';
 $lng['admin']['phpsettings']['title'] = 'PHP Konfiguration';
@@ -998,7 +1000,7 @@ $lng['admin']['know_what_youre_doing'] = 'Ändern Sie diese Einstellungen nur, w
 $lng['serversettings']['mod_fcgid']['peardir']['title'] = 'Globale PEAR Verzeichnisse';
 $lng['serversettings']['mod_fcgid']['peardir']['description'] = 'Welche globalen PEAR Verzeichnisse sollen in den php.ini Einstellungen ersetzt werden? Einzelne Verzeichnisse sind mit einem Doppelpunkt zu trennen.';
 
-//improved Froxlor 2
+//improved EcoWebcontrol 2
 
 $lng['admin']['templates']['index_html'] = 'index.html Datei für neu erzeugte Kundenverzeichnisse';
 $lng['admin']['templates']['index_php'] = 'index.php Datei für neu erzeugte Kundenverzeichnisse';
@@ -1098,7 +1100,7 @@ $lng['aps']['php_general_new'] = 'PHP - Generell - PHP Version zu neu.';
 $lng['aps']['db_mysql_support'] = 'Datenbank - Das Paket benötigt eine andere Datenbank Engine als MySQL.';
 $lng['aps']['db_mysql_version'] = 'Datenbank - MySQL Server zu alt.';
 $lng['aps']['webserver_module'] = 'Webserver - Modul "%s" fehlt.';
-$lng['aps']['webserver_fcgid'] = 'Webserver - Von diesem Paket werden einige Webserver Module benötigt. Da Sie Froxlor in einer FastCGI/mod_fcgid Umgebung verwenden existiert die Funktion "apache_get_modules" nicht. Es kann also nicht ermittelt werden ob das Paket unterstützt wird.';
+$lng['aps']['webserver_fcgid'] = 'Webserver - Von diesem Paket werden einige Webserver Module benötigt. Da Sie EcoWebcontrol in einer FastCGI/mod_fcgid Umgebung verwenden existiert die Funktion "apache_get_modules" nicht. Es kann also nicht ermittelt werden ob das Paket unterstützt wird.';
 $lng['aps']['webserver_htaccess'] = 'Webserver - Dieses Paket benötigt dass .htaccess Dateien vom Webserver geparst werden. Das Paket kann nicht installiert werden, da nicht ermittelt werden kann ob diese Funktion aktiviert ist.';
 $lng['aps']['misc_configscript'] = 'Sonstiges - Die Sprache des Konfigurationsskriptes wird nicht unterstützt.';
 $lng['aps']['misc_charset'] = 'Sonstiges - In der aktuellen Version wird eine Validierung gegen einen gewissen Zeichensatz im Installationsassitenten nicht unterstützt.';
@@ -1167,7 +1169,7 @@ $lng['aps']['numerofpackagesenabled'] = '%s Pakete freigegeben<br/>';
 $lng['aps']['numerofpackageslocked'] = '%s Pakete gesperrt<br/>';
 $lng['aps']['numerofinstances'] = '%s Instanzen installiert<br/>';
 $lng['question']['reallydoaction'] = '<strong>Wollen Sie die gewählten Aktionen wirklich durchführen?</strong><br/><br/>Daten, die durch diese Vorgänge möglicherweise gelöscht werden, können anschließend nicht wieder hergestellt werden.<br/><br/>';
-$lng['aps']['initerror_customer'] = 'Es gibt momentan ein Problem mit dieser Froxlor Erweiterung. Wenden Sie sich an Ihren Administrator für weitere Informationen.';
+$lng['aps']['initerror_customer'] = 'Es gibt momentan ein Problem mit dieser EcoWebcontrol Erweiterung. Wenden Sie sich an Ihren Administrator für weitere Informationen.';
 $lng['aps']['numerofinstances'] = '%s Installationen insgesamt<br/>';
 $lng['aps']['numerofinstancessuccess'] = '%s erfolgreiche Installationen<br/>';
 $lng['aps']['numerofinstanceserror'] = '%s fehlgeschlagene Installationen<br/>';
@@ -1183,7 +1185,7 @@ $lng['aps']['numberofapspackages'] = 'Anzahl an APS Installationen';
 $lng['aps']['allpackagesused'] = '<strong>Fehler</strong><br/><br/>Sie haben bereits die Anzahl an installierbaren APS Anwendungen erreicht bzw. überschritten.';
 $lng['aps']['noinstancesexisting'] = 'Es gibt momentan noch keine Instanzen, die verwaltet werden könnten. Es muss mindestens eine Anwendung von einem Kunden installiert worden sein.';
 $lng['aps']['lightywarning'] = 'Warnung';
-$lng['aps']['lightywarningdescription'] = 'Sie verwenden den lighttpd Webserver zusammen mit Froxlor. Da das APS Modul hauptsächlich für den Apache Webserver geschrieben wurde, kann es unter Umständen vorkommen, dass gewisse Features mit lighttpd nicht funktionieren. Bitte beachten Sie dies bei der Verwendung des APS Moduls. Sollten Sie Fehler bei der Verwendung oder Probleme bei der Nutzung haben, so leiten Sie diese bitte an die Entwickler weiter, damit diese Probleme in der nächsten Version behoben werden können.';
+$lng['aps']['lightywarningdescription'] = 'Sie verwenden den lighttpd Webserver zusammen mit EcoWebcontrol. Da das APS Modul hauptsächlich für den Apache Webserver geschrieben wurde, kann es unter Umständen vorkommen, dass gewisse Features mit lighttpd nicht funktionieren. Bitte beachten Sie dies bei der Verwendung des APS Moduls. Sollten Sie Fehler bei der Verwendung oder Probleme bei der Nutzung haben, so leiten Sie diese bitte an die Entwickler weiter, damit diese Probleme in der nächsten Version behoben werden können.';
 $lng['error']['customerdoesntexist'] = 'Der ausgewählte Kunde existiert nicht.';
 $lng['error']['admindoesntexist'] = 'Der ausgewählte Admin existiert nicht.';
 
@@ -1214,7 +1216,7 @@ $lng['admin']['webserver'] = 'Webserver';
 $lng['error']['admin_domain_emailsystemhostname'] = 'Der Server-Hostname kann leider nicht als E-Mail-Domain verwendet werden.';
 $lng['aps']['license_link'] = 'Link zur Lizenz';
 
-// ADDED IN FROXLOR 0.9
+// ADDED IN Froxlor 0.9
 
 $lng['admin']['spfsettings'] = 'Domain SPF Einstellungen';
 $lng['spf']['use_spf'] = 'Aktiviere SPF für Domains?';
@@ -1229,12 +1231,12 @@ $lng['autoresponder']['date_until'] = 'End-Datum';
 $lng['autoresponder']['startenddate'] = 'Start/End-Datum';
 $lng['panel']['not_activated'] = 'Nicht aktiviert';
 $lng['panel']['off'] = 'aus';
-$lng['update']['updateinprogress_onlyadmincanlogin'] = 'Eine neuere Version von Froxlor wurde installiert, aber noch nicht eingerichtet.<br />Nur der Administrator kann sich anmelden und die Aktualisierung abschließen.';
-$lng['update']['update'] = 'Froxlor Aktualisierung';
+$lng['update']['updateinprogress_onlyadmincanlogin'] = 'Eine neuere Version von EcoWebcontrol wurde installiert, aber noch nicht eingerichtet.<br />Nur der Administrator kann sich anmelden und die Aktualisierung abschließen.';
+$lng['update']['update'] = 'EcoWebcontrol Aktualisierung';
 $lng['update']['proceed'] = 'Ausführen';
-$lng['update']['update_information']['part_a'] = 'Die Froxlor Dateien wurden aktualisiert. Neue Version ist <strong>%newversion</strong>. Die bisher installierte Version ist <strong>%curversion</strong>';
+$lng['update']['update_information']['part_a'] = 'Die EcoWebcontrol Dateien wurden aktualisiert. Neue Version ist <strong>%newversion</strong>. Die bisher installierte Version ist <strong>%curversion</strong>';
 $lng['update']['update_information']['part_b'] = '<br /><br />Ein Kunden-Login ist vor Abschluss des Aktualisierungsvorganges nicht möglich.<br /><strong>Aktualisierung ausführen?</strong>';
-$lng['update']['noupdatesavail'] = '<strong>Ihre Froxlor-Version ist aktuell.</strong>';
+$lng['update']['noupdatesavail'] = '<strong>Ihre EcoWebcontrol-Version ist aktuell.</strong>';
 $lng['admin']['specialsettingsforsubdomains'] = 'Übernehme Einstellungen für alle Subdomains (*.beispiel.de)';
 $lng['serversettings']['specialsettingsforsubdomains']['description'] = 'Wenn ja, werden die individuellen Einstellungen für alle Subdomains übernommen; wenn nein, werden Subdomain-Specialsettings entfernt.';
 $lng['tasks']['outstanding_tasks'] = 'Ausstehende Cron-Aufgaben';
@@ -1243,7 +1245,7 @@ $lng['tasks']['adding_customer'] = 'Erstelle neuen Kunden %loginname%';
 $lng['tasks']['rebuild_bindconfig'] = 'Neuerstellung der Bind-Konfiguration';
 $lng['tasks']['creating_ftpdir'] = 'Erstelle Verzeichnis für neuen FTP-Benutzer';
 $lng['tasks']['deleting_customerfiles'] = 'Löschen von Kunden-Dateien %loginname%';
-$lng['tasks']['noneoutstanding'] = 'Zur Zeit gibt es keine ausstehenden Aufgaben für Froxlor';
+$lng['tasks']['noneoutstanding'] = 'Zur Zeit gibt es keine ausstehenden Aufgaben für EcoWebcontrol';
 $lng['ticket']['nonexistingcustomer'] = '(gelöschter Kunde)';
 $lng['admin']['ticket_nocustomeraddingavailable'] = 'Es können derzeit keine neuen Support-Tickets eröffnet werden. Sie müssen zuerst einen Kunden anlegen';
 
@@ -1255,7 +1257,7 @@ $lng['admin']['servicedata'] = 'Dienstleistungsdaten';
 
 // ADDED IN FROXLOR 0.9.2
 
-$lng['admin']['newerversionavailable'] = 'Eine neuere Version von Froxlor wurde veröffentlicht';
+$lng['admin']['newerversionavailable'] = 'Eine neuere Version von EcoWebcontrol wurde veröffentlicht';
 
 // ADDED IN FROXLOR 0.9.3
 
@@ -1287,7 +1289,7 @@ $lng['dkim']['dkim_notes']['description'] = 'Eine Notiz, welche für Menschen in
 $lng['dkim']['dkim_add_adsp']['title'] = 'DKIM ADSP Eintrag hinzufügen';
 $lng['dkim']['dkim_add_adsp']['description'] = 'Wenn unsicher oder unbekannt, belassen sie es auf "aktiviert"';
 $lng['dkim']['dkim_add_adsppolicy']['title'] = 'ADSP Richtlinie';
-$lng['dkim']['dkim_add_adsppolicy']['description'] = 'Mehr Informationen zu dieser Einstellung (englisch) <a target="blank" href="http://redmine.froxlor.org/projects/froxlor/wiki/En-dkim-adsp-policies">DKIM ADSP Policies</a>';
+$lng['dkim']['dkim_add_adsppolicy']['description'] = 'Mehr Informationen zu dieser Einstellung (englisch) <a target="blank" href="http://redmine.EcoWebcontrol.org/projects/EcoWebcontrol/wiki/En-dkim-adsp-policies">DKIM ADSP Policies</a>';
 
 $lng['admin']['cron']['cronsettings'] = 'Cronjob Einstellungen';
 $lng['cron']['cronname'] = 'Cronjob-Name';
@@ -1317,7 +1319,7 @@ $lng['cronjob']['cronjobintervalv'] = 'Laufzeit-Intervall Wert';
 $lng['cronjob']['cronjobinterval'] = 'Laufzeit-Intervall';
 $lng['panel']['options'] = 'Optionen';
 $lng['admin']['warning'] = 'ACHTUNG - Wichtiger Hinweis!';
-$lng['cron']['changewarning'] = 'Änderungen an diesen Werten können einen negativen Effekt auf das Verhalten von Froxlor und seinen automatisierten Aufgaben haben.<br /><br />Ändern Sie hier etwas bitte nur, wenn Sie sich dessen Folgen im Klaren sind.';
+$lng['cron']['changewarning'] = 'Änderungen an diesen Werten können einen negativen Effekt auf das Verhalten von EcoWebcontrol und seinen automatisierten Aufgaben haben.<br /><br />Ändern Sie hier etwas bitte nur, wenn Sie sich dessen Folgen im Klaren sind.';
 
 $lng['serversettings']['stdsubdomainhost']['title'] = 'Kunden Standard-Subdomain';
 $lng['serversettings']['stdsubdomainhost']['description'] = 'Welcher Hostname soll für das Erstellen der Kunden-Standard-Subdomain verwendet werden? Falls leer wird der System-Hostname verwendet.';
@@ -1326,7 +1328,7 @@ $lng['serversettings']['stdsubdomainhost']['description'] = 'Welcher Hostname so
 $lng['ftp']['account_edit'] = 'FTP Konto bearbeiten';
 $lng['ftp']['editpassdescription'] = 'Neues Passwort setzen oder leer für keine Änderung.';
 $lng['customer']['sendinfomail'] = 'Daten per E-Mail an mich senden';
-$lng['customer']['mysql_add']['infomail_subject'] = '[Froxlor] Neue Datenbank erstellt';
+$lng['customer']['mysql_add']['infomail_subject'] = '[EcoWebcontrol] Neue Datenbank erstellt';
 $lng['customer']['mysql_add']['infomail_body']['main'] = "Hallo {CUST_NAME},\n\ndu hast gerade eine neue Datenbank angelegt. Hier die angegebenen Informationen:\n\nDatenbankname: {DB_NAME}\nPasswort: {DB_PASS}\nBeschreibung: {DB_DESC}\nDatenbank-Server: {DB_SRV}\nphpMyAdmin: {PMA_URI}\nVielen Dank, Ihr Administrator";
 $lng['error']['domains_cantdeletedomainwithapsinstances'] = 'Sie können keine Domain löschen, die noch von APS Paketen verwendet wird. Löschen Sie zuerst alle installierten APS Pakete dieser Domain.';
 $lng['serversettings']['awstats_path'] = 'Pfad zu AWStats \'awstats_buildstaticpages.pl\'';
@@ -1382,7 +1384,7 @@ $lng['serversettings']['ftpserver']['desc'] = 'Wenn pureftpd ausgewählt ist, we
 $lng['serversettings']['ftpprefix']['description'] = 'Welchen Prefix sollen die FTP-Benutzerkonten haben?<br/><b>Wenn du das änderst, musst du auch das Quota SQL Query in der FTP Server Config ändern, solltest du FTP-Quotas benutzen!</b>';
 
 // ADDED IN FROXLOR 0.9.7-svn1
-$lng['customer']['ftp_add']['infomail_subject'] = '[Froxlor] Neuer FTP-Benutzer erstellt';
+$lng['customer']['ftp_add']['infomail_subject'] = '[EcoWebcontrol] Neuer FTP-Benutzer erstellt';
 $lng['customer']['ftp_add']['infomail_body']['main'] = "Hallo {CUST_NAME},\n\ndu hast gerade einen neuen FTP-Benutzer angelegt. Hier die angegebenen Informationen:\n\nBenutzername: {USR_NAME}\nPasswort: {USR_PASS}\nPfad: {USR_PATH}\n\nVielen Dank, Ihr Administrator";
 $lng['domains']['redirectifpathisurl'] = 'Redirect code (Standard: leer)';
 $lng['domains']['redirectifpathisurlinfo'] = 'Der Redirect code kann gewählt werden, wenn der eingegebene Pfad eine URL ist';
@@ -1411,11 +1413,11 @@ $lng['admin']['webserver_user'] = 'Benutzername Webserver';
 $lng['admin']['webserver_group'] = 'Gruppenname Webserver';
 
 // ADDED IN FROXLOR 0.9.10
-$lng['serversettings']['froxlordirectlyviahostname'] = 'Froxlor direkt über den Hostnamen erreichbar machen';
+$lng['serversettings']['EcoWebcontroldirectlyviahostname'] = 'EcoWebcontrol direkt über den Hostnamen erreichbar machen';
 
 // ADDED IN FROXLOR 0.9.11-svn1
 $lng['serversettings']['panel_password_regex']['title'] = 'Regulärer Ausdruck für Passwörter';
-$lng['serversettings']['panel_password_regex']['description'] = 'Hier können Sie einen regulären Ausdruck für Passwort-Komplexität festlegen.<br />Leer = keine bestimmten Anforderungen<br />(<a target="blank" href="http://redmine.froxlor.org/projects/froxlor/wiki/En-password-regex-examples">RegEx Hilfe/Beispiele</a>)';
+$lng['serversettings']['panel_password_regex']['description'] = 'Hier können Sie einen regulären Ausdruck für Passwort-Komplexität festlegen.<br />Leer = keine bestimmten Anforderungen<br />(<a target="blank" href="http://redmine.EcoWebcontrol.org/projects/EcoWebcontrol/wiki/En-password-regex-examples">RegEx Hilfe/Beispiele</a>)';
 $lng['error']['notrequiredpasswordcomplexity'] = 'Die vorgegebene Passwort-Komplexität wurde nicht erfüllt.<br />Bitte kontaktieren Sie Ihren Administrator, wenn Sie Fragen zur Komplexitäts-Vorgabe haben.';
 
 // ADDED IN FROXLOR 0.9.11-svn2
@@ -1428,15 +1430,15 @@ $lng['serversettings']['perl_path']['description'] = 'Standard ist /usr/bin/perl
 
 // ADDED IN FROXLOR 0.9.12-svn1
 $lng['admin']['fcgid_settings'] = 'FCGID';
-$lng['serversettings']['mod_fcgid_ownvhost']['title'] = 'Verwende FCGID im Froxlor Vhost';
-$lng['serversettings']['mod_fcgid_ownvhost']['description'] = 'Wenn verwendet, wird Froxlor selbst unter einem lokalem Benutzer ausgeführt';
-$lng['admin']['mod_fcgid_user'] = 'Lokaler Benutzer für FCGID (Froxlor Vhost)';
-$lng['admin']['mod_fcgid_group'] = 'Lokale Gruppe für FCGID (Froxlor Vhost)';
+$lng['serversettings']['mod_fcgid_ownvhost']['title'] = 'Verwende FCGID im EcoWebcontrol Vhost';
+$lng['serversettings']['mod_fcgid_ownvhost']['description'] = 'Wenn verwendet, wird EcoWebcontrol selbst unter einem lokalem Benutzer ausgeführt';
+$lng['admin']['mod_fcgid_user'] = 'Lokaler Benutzer für FCGID (EcoWebcontrol Vhost)';
+$lng['admin']['mod_fcgid_group'] = 'Lokale Gruppe für FCGID (EcoWebcontrol Vhost)';
 
 // ADDED IN FROXLOR 0.9.12-svn2
 $lng['admin']['perl_settings'] = 'Perl/CGI';
 $lng['serversettings']['perl']['suexecworkaround']['title'] = 'Aktiviere SuExec Workaround';
-$lng['serversettings']['perl']['suexecworkaround']['description'] = 'Aktivieren Sie den Workaround nur, wenn die Kunden-Heimatverzeichnisse sich nicht unterhalb des suexec-Pfades liegen.<br />Wenn aktiviert erstellt Froxlor eine Verknüpfung des vom Kunden für Perl aktiviertem Pfad + /cgi-bin/ im angegebenen suexec-Pfad.<br />Bitte beachten Sie, dass Perl dann nur im Unterordner /cgi-bin/ des Kunden-Ordners funktioniert und nicht direkt in diesem Ordner (wie es ohne den Workaround wäre!)';
+$lng['serversettings']['perl']['suexecworkaround']['description'] = 'Aktivieren Sie den Workaround nur, wenn die Kunden-Heimatverzeichnisse sich nicht unterhalb des suexec-Pfades liegen.<br />Wenn aktiviert erstellt EcoWebcontrol eine Verknüpfung des vom Kunden für Perl aktiviertem Pfad + /cgi-bin/ im angegebenen suexec-Pfad.<br />Bitte beachten Sie, dass Perl dann nur im Unterordner /cgi-bin/ des Kunden-Ordners funktioniert und nicht direkt in diesem Ordner (wie es ohne den Workaround wäre!)';
 $lng['serversettings']['perl']['suexeccgipath']['title'] = 'Pfad für Verknüpfungen zu Kunden-Perl-Verzeichnis';
 $lng['serversettings']['perl']['suexeccgipath']['description'] = 'Diese Einstellung wird nur benötigt, wenn der SuExec-Workaround aktiviert ist.<br />ACHTUNG: Stellen Sie sicher, dass sich der angegebene Pfad innerhalb des Suexec-Pfades befindet ansonsten ist der Workaround nutzlos';
 $lng['panel']['descriptionerrordocument'] = 'Mögliche Werte sind: URL, Pfad zu einer Datei oder ein Text umgeben von Anführungszeichen (" ")<br />Leer für Server-Standardwert.';
@@ -1476,7 +1478,7 @@ $lng['admin']['templates']['password_reset'] = 'Kunden-Benachrichtigung nach Zur
 $lng['customer']['autoresponder'] = 'Abwesenheitsnachrichten';
 
 // ADDED IN FROXLOR 0.9.14-svn1
-$lng['serversettings']['mod_fcgid']['defaultini_ownvhost'] = 'Voreingestellte PHP Konfiguration für den Froxlor-Vhost';
+$lng['serversettings']['mod_fcgid']['defaultini_ownvhost'] = 'Voreingestellte PHP Konfiguration für den EcoWebcontrol-Vhost';
 
 // ADDED IN FROXLOR 0.9.14-svn3
 $lng['serversettings']['awstats_icons']['title'] = 'Pfad zum AWstats icons Ordner';
@@ -1486,7 +1488,7 @@ $lng['serversettings']['awstats_icons']['description'] = 'z.B. /usr/share/awstat
 $lng['admin']['ipsandports']['ssl_cert_chainfile'] = 'Pfad zu dem SSL CertificateChainFile';
 
 // ADDED IN FROXLOR 0.9.14-svn5
-$lng['admin']['ipsandports']['docroot']['title'] = 'Benutzerdefinierter Docroot (leer = zeige auf Froxlor)';
+$lng['admin']['ipsandports']['docroot']['title'] = 'Benutzerdefinierter Docroot (leer = zeige auf EcoWebcontrol)';
 $lng['admin']['ipsandports']['docroot']['description'] = 'Hier kann ein benutzerdefinierter Document-Root (der Zielordner für einen Zugriff) für diese IP/Port Kombination gesetzt werden.<br /><strong>ACHTUNG:</strong> Bitte überlege vorher, welchen Pfad du hier angibst!';
 
 // ADDED IN FROXLOR 0.9.14-svn6
@@ -1524,10 +1526,10 @@ $lng['serversettings']['phpfpm_settings']['max_requests']['title'] = 'Requests p
 $lng['serversettings']['phpfpm_settings']['max_requests']['description'] = 'Für keine Begrenzung \'0\' angeben. Equivalent zu PHP_FCGI_MAX_REQUESTS.';
 $lng['error']['phpfpmstillenabled'] = 'PHP-FPM ist derzeit aktiviert. Bitte deaktiviere es, um FCGID zu aktivieren';
 $lng['error']['fcgidstillenabled'] = 'FCGID ist derzeit aktiviert. Bitte deaktiviere es, um PHP-FPM zu aktivieren';
-$lng['phpfpm']['vhost_httpuser'] = 'Lokaler Benutzer für PHP-FPM (Froxlor Vhost)';
-$lng['phpfpm']['vhost_httpgroup'] = 'Lokale Gruppe für PHP-FPM (Froxlor Vhost)';
-$lng['phpfpm']['ownvhost']['title'] = 'Verwende PHP-FPM im Froxlor Vhost';
-$lng['phpfpm']['ownvhost']['description'] = 'Wenn verwendet, wird Froxlor selbst unter einem lokalem Benutzer ausgeführt';
+$lng['phpfpm']['vhost_httpuser'] = 'Lokaler Benutzer für PHP-FPM (EcoWebcontrol Vhost)';
+$lng['phpfpm']['vhost_httpgroup'] = 'Lokale Gruppe für PHP-FPM (EcoWebcontrol Vhost)';
+$lng['phpfpm']['ownvhost']['title'] = 'Verwende PHP-FPM im EcoWebcontrol Vhost';
+$lng['phpfpm']['ownvhost']['description'] = 'Wenn verwendet, wird EcoWebcontrol selbst unter einem lokalem Benutzer ausgeführt';
 
 // ADDED IN FROXLOR 0.9.17
 $lng['crondesc']['cron_usage_report'] = 'Sende Reports über Webspace- und Trafficverbrauch';
@@ -1587,7 +1589,7 @@ $lng['error']['admin_domain_emailsystemhostname'] = 'Der System - Hostname kann 
 $lng['backup'] = 'Backup';
 $lng['backup_allowed'] = 'Backup erlaubt';
 $lng['extras']['backup_create'] = 'Backup erstellen?';
-$lng['extras']['backup_info'] = 'Das Backup wird täglich in einem FTP Verzeichnis abgelegt. Der FTP Username ist "<Froxloruser>_backup". Das FTP Passwort ist das gleiche wie bei ihrem Haupt FTP Account.';
+$lng['extras']['backup_info'] = 'Das Backup wird täglich in einem FTP Verzeichnis abgelegt. Der FTP Username ist "<EcoWebcontroluser>_backup". Das FTP Passwort ist das gleiche wie bei ihrem Haupt FTP Account.';
 $lng['extras']['backup_info_sep'] = 'Es sind komprimierte Archive von Ihrem Webverzeichnis und Ihren Datenbanken enthalten.';
 $lng['extras']['backup_info_big'] = 'Es ist ein komprimiertes Archiv von Ihrem Webverzeichnis und Ihren Datenbanken enthalten.';
 $lng['extras']['backup_count_info'] = '<br /><br />Beachten Sie bitte, dass das Backup den verfügbaren Speicherplatz belastet!';
