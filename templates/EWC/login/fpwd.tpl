@@ -2,7 +2,7 @@ $header
 	<article class="login hide">
     
 		<header class="loginheader">
-            <img src="templates/Froxlor/assets/img/alpha.gif" alt="Froxlor Server Management Panel" />
+            <img src="templates/EWC/assets/img/alpha.gif" alt="Froxlor Server Management Panel" />
 		</header>
         
 		<section class="loginmsg">
