@@ -30,7 +30,8 @@ html, body
 
 .navbar .brand img
 {
-	width: 200px;
+	width: 260px;
+	margin-left: 10px;
 	height:	43px;
 	background: transparent url('../img/logo_header.png') no-repeat center;
 	float: right;
