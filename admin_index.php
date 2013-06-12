@@ -86,13 +86,14 @@ if($page == 'overview')
 	$webserverinterface = strtoupper(@php_sapi_name());
 
 
-		$update_check_uri = 'http://eco-webcontrol.com/repo/version/version.php?version=' . $version;
+		$update_check_uri = 'eco-webcontrol.com/repo/version/version.php?version=' . $version;
 
 		if(ini_get('allow_url_fopen'))
 		{
-			if(fopen($update_check_uri, r) != FALSE) {
+			if(fsockopen($update_check_uri, 80, 3) != "FALSE") {
 				
-				$latestversion = @file($update_check_uri);
+				$latestversion = @file('http://'.$update_check_uri);
+				
 
 				if (isset($latestversion[0]))
 				{
@@ -116,11 +117,11 @@ if($page == 'overview')
 						}
 					}
 					else {
-						redirectTo($update_check_uri.'/pretty', NULL);
+						redirectTo('http://'.$update_check_uri, NULL);
 					}
 					}			
 			else {
-				redirectTo($update_check_uri.'/pretty', NULL);
+				redirectTo('http://'.$update_check_uri, NULL);
 			}
 			}
 			else {
@@ -128,7 +129,7 @@ if($page == 'overview')
 			}
 		}
 		else {
-			redirectTo($update_check_uri.'/pretty', NULL);
+			redirectTo('http://'.$update_check_uri, NULL);
 		}
 		
 	}
