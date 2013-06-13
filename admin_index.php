@@ -89,8 +89,9 @@ if($page == 'overview')
 		$update_check_uri = 'eco-webcontrol.com/repo/version/version.php?version=' . $version;
 
 		if(ini_get('allow_url_fopen'))
-		{
-			if(fsockopen($update_check_uri, 80, 3) != "FALSE") {
+		{	$port = "80";
+			$timeout = "3";
+			if(!fsockopen($update_check_uri, $port, $timeout)) {
 				
 				$latestversion = @file('http://'.$update_check_uri);
 				
