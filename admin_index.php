@@ -85,15 +85,15 @@ if($page == 'overview')
 	$mysqlclientversion = mysql_get_client_info();
 	$webserverinterface = strtoupper(@php_sapi_name());
 
-
-		$update_check_uri = 'eco-webcontrol.com/repo/version/version.php?version=' . $version;
+		$updateserveroffline = 'false';
+		$domain = 'eco-webcontrol.com';
+		$update_check_uri = 'http://'.$domain.'/repo/version/version.php?version=' . $version;
 
 		if(ini_get('allow_url_fopen'))
-		{	$port = "80";
-			$timeout = "3";
-			if(!fsockopen($update_check_uri, $port, $timeout)) {
+		{	$port = "80"; $timeout = "3";
+			if(fsockopen($domain, $port, $timeout)) {
 				
-				$latestversion = @file('http://'.$update_check_uri);
+				$latestversion = @file($update_check_uri);
 				
 
 				if (isset($latestversion[0]))
@@ -118,11 +118,11 @@ if($page == 'overview')
 						}
 					}
 					else {
-						redirectTo('http://'.$update_check_uri, NULL);
+						redirectTo($update_check_uri, NULL);
 					}
 					}			
 			else {
-				redirectTo('http://'.$update_check_uri, NULL);
+				redirectTo($update_check_uri, NULL);
 			}
 			}
 			else {
@@ -130,7 +130,7 @@ if($page == 'overview')
 			}
 		}
 		else {
-			redirectTo('http://'.$update_check_uri, NULL);
+			redirectTo($update_check_uri, NULL);
 		}
 		
 	
@@ -213,7 +213,6 @@ if($page == 'overview')
 
 		$uptime = '';
 	}
-
 	eval("echo \"" . getTemplate("index/index") . "\";");
 	}
 elseif($page == 'change_password')
