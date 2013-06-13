@@ -125,14 +125,14 @@ if($page == 'overview')
 			}
 			}
 			else {
-				$updateserveroffline = "true"
+				$updateserveroffline = "true";
 			}
 		}
 		else {
 			redirectTo('http://'.$update_check_uri, NULL);
 		}
 		
-	}
+	
 
 	$userinfo['diskspace'] = round($userinfo['diskspace'] / 1024, $settings['panel']['decimal_places']);
 	$userinfo['diskspace_used'] = round($userinfo['diskspace_used'] / 1024, $settings['panel']['decimal_places']);
@@ -214,7 +214,7 @@ if($page == 'overview')
 	}
 
 	eval("echo \"" . getTemplate("index/index") . "\";");
-}
+	}
 elseif($page == 'change_password')
 {
 	if(isset($_POST['send'])
