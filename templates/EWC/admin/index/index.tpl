@@ -129,6 +129,12 @@ $header
 			<td>$uptime</td>
 		</tr>
 		</if>
+		<if $localtime != ''>
+		<tr>
+			<td>Servertime:</td>
+			<td>$localtime</td>
+		</tr>
+		</if>
 		</table>
     </div>
         
@@ -156,9 +162,9 @@ $header
 			<tr>
 				<td>{$lng['admin']['latestversion']}:</td>
 				<if $isnewerversion != 0 >
-					<td><a href="$lookfornewversion_link"><strong>$lookfornewversion_lable</strong></a></td>
+					<td><strong>$lookfornewversion_lable</strong></td>
 				<else>
-					<td><a href="$lookfornewversion_link">$lookfornewversion_lable</a></td>
+					<td>$lookfornewversion_lable</td>
 				</if>
 			</tr>
 			<if $isnewerversion != '0' >

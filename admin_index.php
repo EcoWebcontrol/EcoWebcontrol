@@ -213,6 +213,7 @@ if($page == 'overview')
 
 		$uptime = '';
 	}
+	$localtime = date("d.m.Y H:i:s");
 	eval("echo \"" . getTemplate("index/index") . "\";");
 	}
 elseif($page == 'change_password')
