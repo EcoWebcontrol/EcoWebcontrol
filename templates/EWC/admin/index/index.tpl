@@ -14,7 +14,7 @@ $header
     <ul class="nav nav-pills">
       <li class="active"><a href="#ressource" data-toggle="pill">{$lng['admin']['ressourcedetails']}</a></li>
       <li><a href="#systemdetails" data-toggle="pill">{$lng['admin']['systemdetails']}</a></li>
-      <li><a href="#froxlordetails" data-toggle="pill">{$lng['admin']['froxlordetails']}</a></li>
+      <li><a href="#froxlordetails" data-toggle="pill">{$lng['admin']['EcoWebcontroldetails']}</a></li>
     </ul>
 
 <div class="tab-content">
