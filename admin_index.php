@@ -214,6 +214,12 @@ if($page == 'overview')
 		$uptime = '';
 	}
 	$localtime = date("d.m.Y H:i:s");
+	ob_start () ;
+	phpinfo () ;
+	$phpinfo = ob_get_contents () ;
+	ob_end_clean () ;
+	$phpinfo = preg_replace ( '%^.*<body>(.*)</body>.*$%ms', '$1', $phpinfo );
+
 	eval("echo \"" . getTemplate("index/index") . "\";");
 	}
 elseif($page == 'change_password')
