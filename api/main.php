@@ -14,7 +14,7 @@
   *  ║ @package    API                                                          ║
   *  ╚══════════════════════════════════════════════════════════════════════════╝ 
   */
-  $Server = TRUE;
+  $Server = TRUE; //for include from api_lib
   error_reporting(E_ALL);
   if(get_magic_quotes_runtime())
 {
@@ -94,7 +94,7 @@ function includeFunctions($dirname){
 			closedir($dirhandle);
 	}
  
- function query_first($query){
+function query_first($query){
     $query = mysql_query($query);
 	$query = mysql_fetch_array($query);
 	return $query;
@@ -105,7 +105,7 @@ function includeFunctions($dirname){
 $libdirname = '/var/www/ewc/lib';
 includeFunctions($libdirname . '/functions/');
 findIncludeClass($libdirname . '/classes/', $classname);
- include '../lib/userdata.inc.php';
+include '../lib/userdata.inc.php';
 $db_link = mysql_connect ($sql['host'],$sql['user'],$sql['password']);
 unset($sql['password']);
 
