@@ -236,3 +236,47 @@ elseif($page == 'enforcequotas'
 		ask_yesno('admin_quotas_reallyenforce', $filename, array('page' => $page));
 	}
 }
+elseif ($page == 'languages') {
+	if (isset($_GET['action'])) {
+		if ($_GET['action'] != '' and !is_numeric($_GET['action'])) {
+			if ($_GET['action'] == 'active') {
+					$db->query("UPDATE `".TABLE_PANEL_LANGUAGE."` SET `active`=1 WHERE language='".$db->escape($_GET['language'])."'");
+					redirectTo('admin_settings.php',array('s' => $s, 'page' => $page));			
+			}
+			elseif ($_GET['action'] == 'deactive') {
+				$result = $db->queryfirst("SELECT `active` from ".TABLE_PANEL_LANGUAGE." WHERE `active`='1'");
+				$active_lngs = count($result);
+				echo $active_lngs;
+				if ($active_lngs >= 1) {
+					$db->query("UPDATE `".TABLE_PANEL_LANGUAGE."` SET `active`=0 WHERE language='".$db->escape($_GET['language'])."'");
+					redirectTo('admin_settings.php',array('s' => $s, 'page' => $page));
+				}
+				
+			}
+		}
+	}
+	else {
+		$db_languages = $db->query("SELECT `language`, `active` FROM `".TABLE_PANEL_LANGUAGE);
+		$languages ='';
+		$languages = '<tr><td><h3>'.$lng['login']['language'].'</h3></td><td><h3>'.$lng['panel']['active'].'</h3></td><td>'.$lng['panel']['options'].'</td></tr>';
+		while ($language =  $db->fetch_array($db_languages))
+			{
+			  $languages .= "<tr>";
+			  $languages .= "<td>". $language['language'] . "</td>";
+			  if ($language['active'] =='1') {
+				  $languages .= "<td>". $lng['panel']['yes'] . "</td>";
+				  $languages .= "<td width=\"150px\"><a class=\"btn btn-danger\" href=\"".$linker->getLink(array('section' => 'settings','page' => $page, 'action' => 'deactive', 'language' => $language['language']))." \" ><i class=\"icon-minus-sign icon-white\"></i> ".$lng['panel']['disable']."</a></td>";
+			  }
+			  elseif ($language['active'] =='0') {
+				  $languages .= "<td>". $lng['panel']['no'] . "</td>";
+				  $languages .= "<td width=\"150px\"><a class=\"btn btn btn-success\" href=\"".$linker->getLink(array('section' => 'settings','page' => $page, 'action' => 'active', 'language' => $language['language']))." \" ><i class=\"icon-plus-sign icon-white\"></i> ".$lng['panel']['enable']."</a></td>";
+				  
+			  }
+			  else {
+				  
+			  }
+			  $languages .= "</tr>";
+			}
+		eval("echo \"" . getTemplate("settings/languages") . "\";");
+	}
+}
