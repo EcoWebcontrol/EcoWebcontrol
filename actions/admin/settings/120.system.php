@@ -63,7 +63,7 @@ return array(
 					'plausibility_check_method' => 'checkHostname',
 					),
 				'system_froxlordirectlyviahostname' => array(
-					'label' => $lng['serversettings']['froxlordirectlyviahostname'],
+					'label' => $lng['serversettings']['EcoWebcontroldirectlyviahostname'],
 					'settinggroup' => 'system',
 					'varname' => 'froxlordirectlyviahostname',
 					'type' => 'bool',
