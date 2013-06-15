@@ -244,9 +244,13 @@ elseif ($page == 'languages') {
 					redirectTo('admin_settings.php',array('s' => $s, 'page' => $page));			
 			}
 			elseif ($_GET['action'] == 'deactive') {
-				$result = $db->queryfirst("SELECT `active` from ".TABLE_PANEL_LANGUAGE." WHERE `active`='1'");
-				$active_lngs = count($result);
-				echo $active_lngs;
+				$result = $db->query("SELECT `active` from ".TABLE_PANEL_LANGUAGE);
+				$active_lngs=0;
+				while ($count_language =  $db->fetch_array($result)){
+					if ($count_language['active'] == 1) {
+						$active_lngs++;
+					}
+				}
 				if ($active_lngs >= 1) {
 					$db->query("UPDATE `".TABLE_PANEL_LANGUAGE."` SET `active`=0 WHERE language='".$db->escape($_GET['language'])."'");
 					redirectTo('admin_settings.php',array('s' => $s, 'page' => $page));
