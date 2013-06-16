@@ -9,7 +9,7 @@
 	
 		<form action="$filename" method="post" enctype="application/x-www-form-urlencoded">
 			<fieldset>
-			<legend>Froxlor&nbsp;-&nbsp;{$lng['aps']['specialoptions']}</legend>
+			<legend>EcoWebcontrol&nbsp;-&nbsp;{$lng['aps']['specialoptions']}</legend>
 			<p>
 				<strong>{$lng['admin']['phpsettings']['actions']}</strong>
 			</p>

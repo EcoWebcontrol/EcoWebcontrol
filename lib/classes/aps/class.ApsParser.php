@@ -666,9 +666,9 @@ class ApsParser
 					{
 						//install package in system
 
-						if(move_uploaded_file($_FILES[$File]['tmp_name'], './temp/' . basename($_FILES[$File]['name'])) == true)
+						if(move_uploaded_file($_FILES[$File]['tmp_name'], './tmp/' . basename($_FILES[$File]['name'])) == true)
 						{
-							self::InstallNewPackage('./temp/' . basename($_FILES[$File]['name']));
+							self::InstallNewPackage('./tmp/' . basename($_FILES[$File]['name']));
 						}
 						else
 						{
@@ -1724,11 +1724,16 @@ class ApsParser
 			$Error.= '<li>' . $lng['aps']['class_zip_missing'] . '</li>';
 		}
 
-		if(!is_writable($this->RootDir.'temp/')
+		if(!is_writable($this->RootDir.'tmp/')
 		   || !is_writable($this->RootDir.'packages/'))
 		{
-			$dirpermission = str_replace('{$path}', $this->RootDir, $lng['aps']['dir_permissions']);
-			$Error.= '<li>' . $dirpermission . '</li>';
+			mkdir($this->RootDir.'tmp/', 0755);
+			mkdir($this->RootDir.'packages/', 0755);
+			if(!is_writable($this->RootDir.'tmp/') || !is_writable($this->RootDir.'packages/')){
+		   		$dirpermission = str_replace('{$path}', $this->RootDir, $lng['aps']['dir_permissions']);
+				$Error.= '<li>' . $dirpermission . '</li>';
+		   }
+			
 		}
 
 		if($Error != '')
@@ -1924,7 +1929,7 @@ class ApsParser
 		{
 			//find all files in temp directory
 
-			$Files = scandir('./temp/');
+			$Files = scandir('./tmp/');
 			$Counter = 0;
 			foreach($Files as $File)
 			{
@@ -1934,7 +1939,7 @@ class ApsParser
 
 				//install new package in system
 
-				self::InstallNewPackage('./temp/' . $File);
+				self::InstallNewPackage('./tmp/' . $File);
 				$Counter+= 1;
 			}
 

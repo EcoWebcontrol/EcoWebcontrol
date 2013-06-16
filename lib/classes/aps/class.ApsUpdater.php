@@ -208,7 +208,7 @@ class ApsUpdater extends ApsParser
 		{
 			//open file to write contents on disk
 
-			$FileHandle = fopen($this->RootDir . 'temp/' . $Application . '-' . $Version . '.app.zip', 'wb');
+			$FileHandle = fopen($this->RootDir . 'tmp/' . $Application . '-' . $Version . '.app.zip', 'wb');
 
 			if($FileHandle == true)
 			{
@@ -219,7 +219,7 @@ class ApsUpdater extends ApsParser
 
 				//set right permissions
 
-				chmod($this->RootDir . 'temp/' . $Application . '-' . $Version . '.app.zip', 0664);
+				chmod($this->RootDir . 'tmp/' . $Application . '-' . $Version . '.app.zip', 0664);
 				return true;
 			}
 			else
