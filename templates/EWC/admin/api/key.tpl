@@ -2,18 +2,13 @@ $header
 	<article>
 		<header>
 			<h2>
-				{$lng['admin']['api']['headline']}
+				{$lng['api']['headline']}
 			</h2>
 		</header>
 
 		<section>
 
 			<form action="{$linker->getLink(array('section' => 'customers'))}" method="post" enctype="application/x-www-form-urlencoded">
-
-			<div class="form-horizontal search">
-				{$searchcode}
-			</div>
-
 			<if ($userinfo['customers_used'] < $userinfo['customers'] || $userinfo['customers'] == '-1') && 15 < $userinfo['customers_used'] >
 				<div class="overviewadd">
 					<a class="btn btn-inverse" href="{$linker->getLink(array('section' => 'customers', 'page' => $page, 'action' => 'add'))}"><i class="icon-plus icon-white"></i> {$lng['admin']['customer_add']}</a>
@@ -43,7 +38,7 @@ $header
 					</tfoot>
 				</if>
 			<tbody>
-				$customers
+				$api_keys
 			</tbody>
 			</table>
 
@@ -56,7 +51,7 @@ $header
 
 			<if $userinfo['customers_used'] < $userinfo['customers'] || $userinfo['customers'] == '-1'>
 			<div class="overviewadd">
-				<a class="btn btn-inverse" href="{$linker->getLink(array('section' => 'api', 'page' => $page, 'action' => 'add'))}"><i class="icon-plus icon-white"></i> {$lng['admin']['api']['add']}</a>
+				<a class="btn btn-inverse" href="{$linker->getLink(array('section' => 'api', 'page' => $page, 'action' => 'add'))}" rel="confirm"><i class="icon-plus icon-white"></i> {$lng['admin']['api']['add']}</a>
 			</div>
 			</if>
 

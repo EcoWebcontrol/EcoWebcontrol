@@ -33,15 +33,27 @@
 	$page = $_GET['page'];
 	if ($page == 'key') {
 		if ($action == 'add') {
-			
-				$sql = "INSERT INTO `".TABLE_API_KEY."` (`key_1`, `key_2`, `user`, `allow`) VALUES ('".generate_password('40')."', '".generate_password('40')."', '123', '1');";
-				$result = $db->query($sql);
-				standard_success('passwordok');
-				
+				$key1=generate_password('40');
+				$key2=generate_password('40');
+				$result = $db->query("INSERT INTO `".TABLE_API_KEY."` (`key_1`, `key_2`, `user`, `allow`) VALUES ('".$key1."', '".$key2."', '".$userinfo['name']."', '1');");
+				eval("echo \"" . getTemplate("api/key_add") . "\";");
 			}
 			
 			elseif ($action == '') {
-			eval("echo \"" . getTemplate("api/key") . "\";");
+				$pagingcode = '';
+				$api_keys='';
+				$result = $db->query("SELECT `key_1`, `key_2`, `user`, `allow` FROM `".TABLE_API_KEY."`");
+				while($row = $db->fetch_array($result)){
+					$api_keys .= '<tr>';
+					$api_keys .= '<td>'.substr($row['key_1'], 0, -15)."***************"."</td>";
+					$api_keys .= '<td>'.substr($row['key_2'], 0, -15)."***************"."</td>";
+					$api_keys .= '<td>'.$row['user']."</td>";
+					$api_keys .= "<td></td>";
+					$api_keys .= '</tr>';
+				}
+				unset($result,$row);
+				eval("echo \"" . getTemplate("api/key") . "\";");
+				unset($api_keys);
 			}
 			
 		}
