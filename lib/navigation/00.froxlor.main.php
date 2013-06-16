@@ -194,6 +194,10 @@ return array (
 					'label' => $lng['admin']['admins'],
 					'required_resources' => 'change_serversettings',
 				),
+				array (
+					'url' => 'admin_gameserver.php?page=overview',
+					'label' => $lng['gameserver']['headline'],
+				),
 			),
 		),
 		'traffic' => array (
