@@ -90,9 +90,12 @@ if($page == 'overview')
 		$update_check_uri = 'http://'.$domain.'/repo/version/version.php?version=' . $version;
 
 		if(ini_get('allow_url_fopen'))
-		{	$port = "80"; $timeout = "3";
-			if(fsockopen($domain, $port, $timeout)) {
-				
+		{
+			if(fsockopen($update_check_uri, 80, 3) != FALSE)
+			{
+				$port = "80"; $timeout = "3";
+				if(fsockopen($domain, $port, $timeout)) {
+
 				$latestversion = @file($update_check_uri);
 				
 
@@ -329,4 +332,5 @@ elseif($page == 'change_theme')
 
 		eval("echo \"" . getTemplate("index/change_theme") . "\";");
 	}
+}
 }

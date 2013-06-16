@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="templates/{$theme}/assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="templates/{$theme}/assets/css/main.css">
         <link rel="icon" href="templates/{$theme}/assets/img/favicon.ico" type="image/x-icon" />
-        <title><if isset($userinfo['loginname']) && $userinfo['loginname'] != ''>{$userinfo['loginname']} - </if>Froxlor Server Management Panel</title>
+        <title><if isset($userinfo['loginname']) && $userinfo['loginname'] != ''>{$userinfo['loginname']} - </if>EWC Server Management Panel</title>
     </head>
     <body>
     <if isset($userinfo['loginname'])>
