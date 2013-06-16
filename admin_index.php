@@ -85,14 +85,18 @@ if($page == 'overview')
 	$mysqlclientversion = mysql_get_client_info();
 	$webserverinterface = strtoupper(@php_sapi_name());
 
-
-		$update_check_uri = 'eco-webcontrol.com/repo/version/version.php?version=' . $version;
+		$updateserveroffline = 'false';
+		$domain = 'eco-webcontrol.com';
+		$update_check_uri = 'http://'.$domain.'/repo/version/version.php?version=' . $version;
 
 		if(ini_get('allow_url_fopen'))
 		{
-			if(fsockopen($update_check_uri, 80, 3) != FALSE) {
-				
-				$latestversion = @file('http://'.$update_check_uri);
+			if(fsockopen($update_check_uri, 80, 3) != FALSE)
+			{
+				$port = "80"; $timeout = "3";
+				if(fsockopen($domain, $port, $timeout)) {
+
+				$latestversion = @file($update_check_uri);
 				
 
 				if (isset($latestversion[0]))
@@ -117,11 +121,11 @@ if($page == 'overview')
 						}
 					}
 					else {
-						redirectTo('http://'.$update_check_uri, NULL);
+						redirectTo($update_check_uri, NULL);
 					}
 					}			
 			else {
-				redirectTo('http://'.$update_check_uri, NULL);
+				redirectTo($update_check_uri, NULL);
 			}
 			}
 			else {
@@ -129,7 +133,7 @@ if($page == 'overview')
 			}
 		}
 		else {
-			redirectTo('http://'.$update_check_uri, NULL);
+			redirectTo($update_check_uri, NULL);
 		}
 		
 	
@@ -212,6 +216,12 @@ if($page == 'overview')
 
 		$uptime = '';
 	}
+	$localtime = date("d.m.Y H:i:s");
+	ob_start () ;
+	phpinfo () ;
+	$phpinfo = ob_get_contents () ;
+	ob_end_clean () ;
+	$phpinfo = preg_replace ( '%^.*<body>(.*)</body>.*$%ms', '$1', $phpinfo );
 
 	eval("echo \"" . getTemplate("index/index") . "\";");
 	}

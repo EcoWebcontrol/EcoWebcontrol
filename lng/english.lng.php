@@ -1929,3 +1929,18 @@ $lng['error']['featureisdisabled'] = 'Feature %s is disabled. Please contact you
 $lng['serversettings']['catchall_enabled']['title']  = 'Use Catchall';
 $lng['serversettings']['catchall_enabled']['description']  = 'Do you want to provide your customers the catchall-feature?';
 
+//Jkoan
+$lng['api'] = 'API';
+$lng['api']['headline'] = 'Api Schlüssel verwalten';
+$lng['admin']['api']['closed'] = 'Schlüsselpaar Teil 1';
+$lng['admin']['api']['open'] = 'Schlüsselpaar Teil 2';
+$lng['admin']['api']['user'] = 'Api-User';
+$lng['admin']['api']['add'] = 'API-Schlüssel hinzufügen';
+$lng['admin']['api']['doc'] = 'Dokumentation';
+$lng['admin']['store_defaultindex'] = 'Erstelle Standard Datei(n) in Kunden-Ordner?';
+$lng['admin']['multiserver'] ='Multiserver verwaltung';
+$lng['admin']['security'] ='Sicherheitscenter';
+$lng['admin']['phpinfo']='PHP-Info';
+
+//Aaron
+$lng['error']['updateserveroffline'] = 'Der Update-Server ist momentan nicht erreichbar. Es kann nicht nachgeprüft werden, ob es eine neuere Version gibt.';

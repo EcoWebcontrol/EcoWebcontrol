@@ -1667,6 +1667,10 @@ $lng['admin']['api']['doc'] = 'Dokumentation';
 $lng['admin']['store_defaultindex'] = 'Erstelle Standard Datei(n) in Kunden-Ordner?';
 $lng['admin']['multiserver'] ='Multiserver verwaltung';
 $lng['admin']['security'] ='Sicherheitscenter';
+$lng['admin']['phpinfo']='PHP-Info';
+$lng['panel']['enable']='Aktivieren';
+$lng['panel']['disable']='Deaktivieren';
+$lng['panel']['manage_lng']='Sprachen verwalten';
 
 //Aaron
 $lng['error']['updateserveroffline'] = 'Der Update-Server ist momentan nicht erreichbar. Es kann nicht nachgeprüft werden, ob es eine neuere Version gibt.';

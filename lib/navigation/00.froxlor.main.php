@@ -280,6 +280,10 @@ return array (
 					'url' => 'admin_security.php?page=overview',
 					'label' => $lng['admin']['security'],
 				),
+				array (
+					'url' => 'admin_settings.php?page=languages',
+					'label' => $lng['aps']['languages'],
+				),
 			),
 		),
 		'api' => array (

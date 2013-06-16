@@ -14,7 +14,8 @@ $header
     <ul class="nav nav-pills">
       <li class="active"><a href="#ressource" data-toggle="pill">{$lng['admin']['ressourcedetails']}</a></li>
       <li><a href="#systemdetails" data-toggle="pill">{$lng['admin']['systemdetails']}</a></li>
-      <li><a href="#froxlordetails" data-toggle="pill">{$lng['admin']['froxlordetails']}</a></li>
+      <li><a href="#froxlordetails" data-toggle="pill">{$lng['admin']['EcoWebcontroldetails']}</a></li>
+      <li><a href="#phpinfo" data-toggle="pill">{$lng['admin']['phpinfo']}</a></li>
     </ul>
 
 <div class="tab-content">
@@ -129,6 +130,12 @@ $header
 			<td>$uptime</td>
 		</tr>
 		</if>
+		<if $localtime != ''>
+		<tr>
+			<td>Servertime:</td>
+			<td>$localtime</td>
+		</tr>
+		</if>
 		</table>
     </div>
         
@@ -141,7 +148,7 @@ $header
 			<td>{$version}{$branding}</td>
 		</tr>
 		
-		<if $updateserveroffline = 'true'>
+		<if $updateserveroffline == 'true'>
 			<tr>
 				<td>{$lng['admin']['latestversion']}:</td>
 					<td>-</td>
@@ -150,17 +157,18 @@ $header
 			<tr>
 				<td colspan="2"><strong>{$lng['error']['updateserveroffline']}</strong></td>
 			</tr>
-			
-		<else>
+		</if>
+
+		<if $updateserveroffline == 'false'>
 			<tr>
 				<td>{$lng['admin']['latestversion']}:</td>
 				<if $isnewerversion != 0 >
-					<td><a href="$lookfornewversion_link"><strong>$lookfornewversion_lable</strong></a></td>
+					<td><strong>$lookfornewversion_lable</strong></td>
 				<else>
-					<td><a href="$lookfornewversion_link">$lookfornewversion_lable</a></td>
+					<td>$lookfornewversion_lable</td>
 				</if>
 			</tr>
-			<if $isnewerversion != 0 >
+			<if $isnewerversion != '0' >
 			<tr>
 				<td colspan="2"><strong>{$lng['admin']['newerversionavailable']}</strong></td>
 			</tr>
@@ -173,6 +181,15 @@ $header
 		</if>
 		</table>
 	</div>
+	<div class="tab-pane" id="phpinfo">
+		<table class="table table-bordered table-striped">
+		<if $phpinfo != ''>
+		<tr>
+			<td>$phpinfo</td>
+		</tr>
+		</if>
+		</table>
+    </div>
 </div>
 
 	</article>

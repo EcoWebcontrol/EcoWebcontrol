@@ -7,6 +7,7 @@
             <meta name="robots" content="noindex, nofollow, noarchive" />
             <meta name="GOOGLEBOT" content="nosnippet" />
         </if>
+        <if AREA == 'admin'><link rel="stylesheet" href="templates/{$theme}/assets/css/phpinfo.css"></if>
         <link rel="stylesheet" href="templates/{$theme}/assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="templates/{$theme}/assets/css/main.css">
         <link rel="icon" href="templates/{$theme}/assets/img/favicon.ico" type="image/x-icon" />
