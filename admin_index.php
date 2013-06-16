@@ -333,3 +333,4 @@ elseif($page == 'change_theme')
 		eval("echo \"" . getTemplate("index/change_theme") . "\";");
 	}
 }
+}
