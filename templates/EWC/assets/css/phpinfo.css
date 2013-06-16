@@ -1,0 +1,76 @@
+/* 
+    Document   : phpinfo.css
+    Created on : 16.06.2013, 09:34:18
+    Author     : Tobias Mandjik (leckerbeef.de)
+    Contact    : tobias.mandjik <at> gmail <dot> com
+    Description:
+        Adaption of the phpinfo() output to given theme.
+    Tested On  :
+        Microsoft Internet Explorer 10.0.9200.16618
+        Mozilla Firefox Aurora 23.0a2
+*/
+
+/* hide links */
+#phpinfo a,#phpinfo a:link,#phpinfo a:hover {
+    color: #36393c;
+    text-decoration: none;
+    cursor: text;
+}
+
+/* hide a few elements */
+#phpinfo hr { display: none; }
+#phpinfo h1 a { display: none; }
+
+/* heading settings */
+#phpinfo h1,h2 { text-transform: uppercase; }
+#phpinfo h1 { margin: 0; padding: 0 0 0 5px; }
+#phpinfo h2 { margin: 0; padding: 0 0 0 10px; }
+
+/* expand table & override hardcoded table-padding of phpinfo() */
+#phpinfo table { width: 100%; }
+#phpinfo table td { padding: 0; }
+#phpinfo img { float: right; padding: 0 10px 0 0; }
+#phpinfo .center { background: #fff; }  /* overrides parent hover-effect */
+#phpinfo .center table th { background: #efefef; border-left: none; border-right: 1px solid #ddd; }
+
+/* do not display border of last th child element */
+#phpinfo div.center th:last-child { border-right: 0; }
+
+/* rotate background-color of table rows and set global hover effect */
+#phpinfo div.center table tr:nth-child(odd) {background: #f9f9f9; } 
+#phpinfo div.center table tr:nth-child(even) {background: #fff; } 
+#phpinfo div.center table tr:hover {background: #e1e2e5; }
+
+#phpinfo div.center table tr td {
+    background: 0;
+    border: 1px solid #ddd;
+    vertical-align: baseline;
+    /* we do not want border radius in the inner table */
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+#phpinfo div.center table td.e { 
+    padding: 5px 5px 5px 10px;
+    border-left: 0;
+}
+
+#phpinfo div.center table td.v { 
+    white-space: pre-line; /* IE does not break the text by it's own */
+    border-right: 0; 
+    padding: 5px 5px 5px 10px;
+}
+
+/* special td handling */
+#phpinfo div.center table tbody tr.v td {
+    background: #fff;
+    border: 0;
+    padding: 0 0 0 10px;
+}
+
+#phpinfo div.center table tbody tr.h td {
+    background: #fff;
+    border: 0;
+    padding: 5px;
+}
