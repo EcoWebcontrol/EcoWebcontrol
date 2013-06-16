@@ -90,7 +90,7 @@ if($page == 'overview')
 
 		if(ini_get('allow_url_fopen'))
 		{
-			if(fsockopen($update_check_uri, 80, 3) != "FALSE") {
+			if(fsockopen($update_check_uri, 80, 3) != FALSE) {
 				
 				$latestversion = @file('http://'.$update_check_uri);
 				
