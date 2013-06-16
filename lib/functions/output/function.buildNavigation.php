@@ -29,7 +29,7 @@
 function buildNavigation($navigation, $userinfo)
 {
 	$returnvalue = '';
-	if($userinfo['theme'] == 'Delacap' or 'EWC')
+	if($userinfo['theme'] == 'Delacap' or 'EWC')//
 	{
 		foreach($navigation as $key => $box)
 		{
@@ -75,7 +75,6 @@ function buildNavigation($navigation, $userinfo)
 							
 							if($element['url'] == 'admin_api.php?page=key&action=add')
 								$element['modal'] = true;
-								
 							// append sid only to local
 					
 					

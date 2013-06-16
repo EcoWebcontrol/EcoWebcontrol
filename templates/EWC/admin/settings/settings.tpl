@@ -15,7 +15,7 @@
 			<tr>
 				<td  style="text-align:right;" nowrap="nowrap" colspan="2">
 					<input class="btn" type="reset" value="{$lng['panel']['reset']}" />
-                    <input class="btn btn-success" type="submit" value="{$lng['panel']['save']}" />
+                    <input class="btn btn-success" type="submit" value="{$lng['panel']['save']}" rel="confirm"/>
 				</td>
 			</tr>
 		</table>

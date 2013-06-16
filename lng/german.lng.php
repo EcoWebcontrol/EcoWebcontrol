@@ -5,7 +5,7 @@
  * Copyright (c) 2003-2009 the SysCP Team (see authors).
  * Copyright (c) 2010 the EcoWebcontrol Team (see authors).
  * Copyright (c) 2013 the EcoWebcontrol Team (see authors).
- * 
+ *
  * For the full copyright and license information, please view the COPYING
  * file that was distributed with this source code. You can also view the
  * COPYING file online at http://eco-webcontrol.com/files/COPYING.txt
@@ -1283,7 +1283,7 @@ $lng['dkim']['dkim_algorithm']['title'] = 'Gültige Hash Algorithmen';
 $lng['dkim']['dkim_algorithm']['description'] = 'Wählen sie einen Algorithmus, "All" für alle Algorithmen oder Einen oder Mehrere von den verfügbaren Algorithmen';
 $lng['dkim']['dkim_servicetype'] = 'Service Typen';
 $lng['dkim']['dkim_keylength']['title'] = 'Schlüssel-Länge';
-$lng['dkim']['dkim_keylength']['description'] = 'Achtung: Bei Änderung dieser Einstellung müssen alle private/public Schlüssel in "'.$settings['dkim']['dkim_prefix'].'" gelöscht werden.';
+$lng['dkim']['dkim_keylength']['description'] = 'Achtung: Bei Änderung dieser Einstellung müssen alle private/public Schlüssel in "' . $settings['dkim']['dkim_prefix'] . '" gelöscht werden.';
 $lng['dkim']['dkim_notes']['title'] = 'DKIM Notiz';
 $lng['dkim']['dkim_notes']['description'] = 'Eine Notiz, welche für Menschen interessant sein könnte, Z.B. eine URL wie http://www.dnswatch.info. Es gibt keine programmgesteuerte Interpretation für dieses Feld. Gehen sie sparsam mit der Anzahl der Zeichen um, da es Einschränkungen seitens des DNS Dienstes gibt. Dieses Feld ist für Administratoren gedacht, nicht für Benutzer.';
 $lng['dkim']['dkim_add_adsp']['title'] = 'DKIM ADSP Eintrag hinzufügen';
@@ -1362,12 +1362,12 @@ $lng['ticket']['orderdesc'] = 'Hier kann eine logische Sortierung für die Ticke
 // ADDED IN FROXLOR 0.9.6-svn3
 $lng['serversettings']['defaultwebsrverrhandler_enabled'] = 'Verwende Standard-Fehlerdokumente für alle Kunden';
 $lng['serversettings']['defaultwebsrverrhandler_err401']['title'] = 'Datei/URL für Fehler 401';
-$lng['serversettings']['defaultwebsrverrhandler_err401']['description'] = '<div style="color:red">'.$lng['panel']['not_supported'].'lighttpd</div>';
+$lng['serversettings']['defaultwebsrverrhandler_err401']['description'] = '<div style="color:red">' . $lng['panel']['not_supported'] . 'lighttpd</div>';
 $lng['serversettings']['defaultwebsrverrhandler_err403']['title'] = 'Datei/URL für Fehler 403';
-$lng['serversettings']['defaultwebsrverrhandler_err403']['description'] = '<div style="color:red">'.$lng['panel']['not_supported'].'lighttpd</div>';
+$lng['serversettings']['defaultwebsrverrhandler_err403']['description'] = '<div style="color:red">' . $lng['panel']['not_supported'] . 'lighttpd</div>';
 $lng['serversettings']['defaultwebsrverrhandler_err404'] = 'Datei/URL für Fehler 404';
 $lng['serversettings']['defaultwebsrverrhandler_err500']['title'] = 'Datei/URL für Fehler 500';
-$lng['serversettings']['defaultwebsrverrhandler_err500']['description'] = '<div style="color:red">'.$lng['panel']['not_supported'].'lighttpd</div>';
+$lng['serversettings']['defaultwebsrverrhandler_err500']['description'] = '<div style="color:red">' . $lng['panel']['not_supported'] . 'lighttpd</div>';
 
 // ADDED IN FROXLOR 0.9.6-svn4
 $lng['serversettings']['ticket']['default_priority'] = 'Voreingestellte Support-Ticket Priorität';
@@ -1648,13 +1648,13 @@ $lng['serversettings']['phpfpm_settings']['idle_timeout']['description'] = 'Time
 // ADDED IN 0.9.27-svn2
 $lng['panel']['cancel'] = 'abbrechen';
 $lng['admin']['delete_statistics'] = 'Statistiken Löschen';
-$lng['admin']['speciallogwarning'] = 'ACHTUNG: Durch diese Einstellungen werden Sie alle bisherige Statistiken dieser Domain verlieren. Wenn Sie dabei wirklich sicher sind, geben Sie bitte folgenden Text in das nachfolgende Textfeld ein: "'.$lng['admin']['delete_statistics'].'" und bestätigen Sie mit "'.$lng['panel']['delete'].'".<br /><br />';
+$lng['admin']['speciallogwarning'] = 'ACHTUNG: Durch diese Einstellungen werden Sie alle bisherige Statistiken dieser Domain verlieren. Wenn Sie dabei wirklich sicher sind, geben Sie bitte folgenden Text in das nachfolgende Textfeld ein: "' . $lng['admin']['delete_statistics'] . '" und bestätigen Sie mit "' . $lng['panel']['delete'] . '".<br /><br />';
 
 // ADDED IN 0.9.28-svn5
 $lng['error']['operationnotpermitted'] = 'Diese Aktion ist nicht erlaubt!';
 $lng['error']['featureisdisabled'] = 'Die Funktion %s wurde deaktiviert. Kontaktieren Sie bitte Ihren Dienstleister.';
-$lng['serversettings']['catchall_enabled']['title']  = 'Catchall verwenden';
-$lng['serversettings']['catchall_enabled']['description']  = 'Möchten Sie Ihren Kunden die Funktion Catchall zur Verfügung stellen?';
+$lng['serversettings']['catchall_enabled']['title'] = 'Catchall verwenden';
+$lng['serversettings']['catchall_enabled']['description'] = 'Möchten Sie Ihren Kunden die Funktion Catchall zur Verfügung stellen?';
 
 //Jkoan
 $lng['api'] = 'API';
@@ -1665,13 +1665,13 @@ $lng['admin']['api']['user'] = 'Api-User';
 $lng['admin']['api']['add'] = 'API-Schlüssel hinzufügen';
 $lng['admin']['api']['doc'] = 'Dokumentation';
 $lng['admin']['store_defaultindex'] = 'Erstelle Standard Datei(n) in Kunden-Ordner?';
-$lng['admin']['multiserver'] ='Multiserver verwaltung';
-$lng['admin']['security'] ='Sicherheitscenter';
-$lng['admin']['phpinfo']='PHP-Info';
-$lng['panel']['enable']='Aktivieren';
-$lng['panel']['disable']='Deaktivieren';
-$lng['panel']['manage_lng']='Sprachen verwalten';
+$lng['admin']['multiserver'] = 'Multiserver verwaltung';
+$lng['admin']['security'] = 'Sicherheitscenter';
+$lng['admin']['phpinfo'] = 'PHP-Info';
+$lng['panel']['enable'] = 'Aktivieren';
+$lng['panel']['disable'] = 'Deaktivieren';
+$lng['panel']['manage_lng'] = 'Sprachen verwalten';
+$lng['gameserver']['headline'] = 'Gameserver';
 
 //Aaron
 $lng['error']['updateserveroffline'] = 'Der Update-Server ist momentan nicht erreichbar. Es kann nicht nachgeprüft werden, ob es eine neuere Version gibt.';
-
