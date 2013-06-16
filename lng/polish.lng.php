@@ -1007,9 +1007,6 @@ $lng['admin']['templates']['ADMIN_EMAIL'] = 'Zamieniane na konto e-mail administ
 $lng['admin']['templates']['filetemplates'] = 'Pliki szablonï¿½w';
 $lng['admin']['templates']['filecontent'] = 'File content';
 $lng['error']['filecontentnotset'] = 'Plik nie może być pusty!';
-$lng['serversettings']['index_file_extension']['description'] = 'Which file extension should be used for the index file in newly created customer directories? This file extension will be used, if you or one of your admins has created its own index file template.';
-$lng['serversettings']['index_file_extension']['title'] = 'File extension for index file in newly created customer directories';
-$lng['error']['index_file_extension'] = 'The file extension for the index file must be between 1 and 6 characters long. The extension can only contain characters like a-z, A-Z and 0-9';
 $lng['admin']['expert_settings'] = 'Ustawienia Experta!';
 $lng['admin']['mod_fcgid_starter']['title'] = 'Procesï¿½w PHO na tą Domenę (pozostaw puste dla wartości domyślej)';
 

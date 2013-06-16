@@ -1005,9 +1005,6 @@ $lng['admin']['templates']['ADMIN_EMAIL'] = 'Sostituito con l\'indirizzo e-mail 
 $lng['admin']['templates']['filetemplates'] = 'File Modelli';
 $lng['admin']['templates']['filecontent'] = 'Contenuto File';
 $lng['error']['filecontentnotset'] = 'Il file non può essere vuoto!';
-$lng['serversettings']['index_file_extension']['description'] = 'Quale estensione di file deve essere usata per il file index nelle cartelle del cliente appena creato? Questa estensione di file sarà utilizzata se Lei o uno dei vostri amministratori ha creato il proprio file modello di index.';
-$lng['serversettings']['index_file_extension']['title'] = 'Estensione file per il file index delle cartelle dei clienti appena creati';
-$lng['error']['index_file_extension'] = 'L\'estensione file del file index deve essere compresa tra 1 e 6 caratteri. L\'estensione può contenere solo i caratteri a-z, A-Z and 0-9';
 $lng['admin']['expert_settings'] = 'Impostazioni Avanzate!';
 $lng['admin']['mod_fcgid_starter']['title'] = 'Processi PHP per questo dominio (vuoto per lasciare il valore predefinito)';
 

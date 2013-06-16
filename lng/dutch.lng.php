@@ -999,9 +999,6 @@ $lng['admin']['templates']['ADMIN_EMAIL'] = 'Wordt vervangen door het e-mailadre
 $lng['admin']['templates']['filetemplates'] = 'Bestandssjablonen';
 $lng['admin']['templates']['filecontent'] = 'Bestandsinhoud';
 $lng['error']['filecontentnotset'] = 'Het bestand mag niet leeg zijn!';
-$lng['serversettings']['index_file_extension']['description'] = 'Welk achtervoegsel moet gebruikt worden voor het indexbestand? Dit achtervoegsel wordt gebruikt wanneer een van de beheerders een eigen indexsjabloon heeft gemaakt.';
-$lng['serversettings']['index_file_extension']['title'] = 'Achtervoegsel van het indexbestand in nieuwe mappen voor klanten.';
-$lng['error']['index_file_extension'] = 'Het achtervoegsel dient tussen de 1 en 6 tekens lang te zijn. Het mag alleen tekens zal a-z, A-Z en 0-9 bevatten.';
 $lng['admin']['expert_settings'] = 'Instellingen voor experts!';
 $lng['admin']['mod_fcgid_starter']['title'] = 'Aantal PHP-processen voor dit domein. (Leeg betekent standaardinstellingen.)';
 

@@ -558,7 +558,7 @@ if($page == 'customers'
 					$perlenabled = intval($_POST['perlenabled']);
 
 				$store_defaultindex = 0;
-				if(isset($_POST['store_defaultindex']))
+				if($_POST['store_defaultindex'] != 0)
 					$store_defaultindex = $_POST['store_defaultindex'];
 
 				$diskspace = $diskspace * 1024;

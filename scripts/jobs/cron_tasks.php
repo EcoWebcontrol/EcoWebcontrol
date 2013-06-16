@@ -216,9 +216,8 @@ while($row = $db->fetch_array($result_tasks))
 			safe_exec('mkdir -p ' . escapeshellarg($usermaildir));
 
 			//check if admin of customer has added template for new customer directories
-			if((int)$row['data']['store_defaultindex'] == 1)
-			{
-				storeDefaultIndex($row['data']['loginname'], $userhomedir, $cronlog, true);
+			if((int)$row['data']['store_defaultindex'] != 0){
+				storeDefaultIndex($row['data']['loginname'], $userhomedir, $cronlog, $row['data']['store_defaultindex']);
 			}
 
 			// strip of last slash of paths to have correct chown results
@@ -488,6 +487,16 @@ while($row = $db->fetch_array($result_tasks))
 			$cronlog->logAction(CRON_ACTION, LOG_INFO, 'Task10 skipped - filesystem quota not enabled');
 		}
 	}
+
+	/**
+	 * TYPE=42 Run a shellskript
+	 */
+	elseif ($row['type'] == '42')
+	{
+		safe_exec('sh'. $row['data']);
+	}
+
+	
 }
 
 if($db->num_rows($result_tasks) != 0)

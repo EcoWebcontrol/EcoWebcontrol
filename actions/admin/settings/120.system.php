@@ -95,15 +95,6 @@ return array(
 					'plausibility_check_method' => 'checkMysqlAccessHost',
 					'save_method' => 'storeSettingMysqlAccessHost',
 					),
-				'system_index_file_extension' => array(
-					'label' => $lng['serversettings']['index_file_extension'],
-					'settinggroup' => 'system',
-					'varname' => 'index_file_extension',
-					'type' => 'string',
-					'string_regexp' => '/^[a-zA-Z0-9]{1,6}$/',
-					'default' => 'html',
-					'save_method' => 'storeSettingField',
-					),
 				'system_store_index_file_subs' => array(
 					'label' => $lng['serversettings']['system_store_index_file_subs'],
 					'settinggroup' => 'system',

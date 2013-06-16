@@ -982,8 +982,6 @@ INSERT INTO `panel_settings` (`settinggroup`, `varname`, `value`) VALUES
 
 	('system', 'mod_fcgid_peardir', '/usr/share/php/:/usr/share/php5/'),
 
-	('system', 'index_file_extension', 'html'),
-
 	('system', 'mod_fcgid_maxrequests', '250'),
 
 	('system','ssl_key_file','/etc/apache2/apache2.key'),
