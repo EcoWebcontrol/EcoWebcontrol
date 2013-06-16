@@ -30,7 +30,12 @@ if($page == 'overview')
 	 * has any version/dbversion in the database (don't know why)
 	 * so we have to set them both to run a correct upgrade
 	 */
-	if (!isFroxlor()) {
+	if (isEWC()) {
+		if (hasUpdates($version)) {
+			eval("echo \"" . getTemplate("update/index") . "\";");
+		}
+	}
+	else {
 		if (!isset($settings['panel']['version'])
 		|| $settings['panel']['version'] == ''
 		) {
@@ -56,7 +61,7 @@ if($page == 'overview')
 				$settings['system']['dbversion'] = 0;
 			}
 		}
-	}
+	
 
 	if(hasUpdates($version))
 	{
@@ -122,6 +127,6 @@ if($page == 'overview')
 		$redirect_url = 'admin_index.php?s=' . $s;
 		eval("echo \"" . getTemplate("update/noupdatesavail") . "\";");
 	}
-}
+}}
 
 ?>
