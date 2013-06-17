@@ -96,9 +96,6 @@ if($page == 'overview')
 			
 			if(fsockopen($update_check_uri, $update_port, $update_timeout) != FALSE)
 			{
-				$port = "80"; $timeout = "3";
-				if(fsockopen($domain, $port, $timeout)) {
-
 				$latestversion = @file($update_check_uri);
 				
 
@@ -130,10 +127,7 @@ if($page == 'overview')
 			else {
 				redirectTo($update_check_uri, NULL);
 			}
-			}
-			else {
-				$updateserveroffline = "true";
-			}
+		
 		}
 		else {
 			redirectTo($update_check_uri, NULL);
