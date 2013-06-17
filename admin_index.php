@@ -91,7 +91,10 @@ if($page == 'overview')
 
 		if(ini_get('allow_url_fopen'))
 		{
-			if(fsockopen($update_check_uri, 80, 3) != FALSE)
+			$update_port = 80;
+			$update_timeout = 3;
+			
+			if(fsockopen($update_check_uri, $update_port, $update_timeout) != FALSE)
 			{
 				$port = "80"; $timeout = "3";
 				if(fsockopen($domain, $port, $timeout)) {
