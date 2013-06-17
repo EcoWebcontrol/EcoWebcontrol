@@ -94,7 +94,7 @@ if($page == 'overview')
 			$update_port = 80;
 			$update_timeout = 3;
 			
-			if(fsockopen($update_check_uri, $update_port, $update_timeout) != FALSE)
+			if(fsockopen($domain, $update_port, $update_timeout) != FALSE)
 			{
 				$latestversion = @file($update_check_uri);
 				
