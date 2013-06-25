@@ -98,9 +98,9 @@ if($page == 'customers'
 		$result = $db->query("SELECT `c`.*, `a`.`loginname` AS `adminname` " . "FROM `" . TABLE_PANEL_CUSTOMERS . "` `c`, `" . TABLE_PANEL_ADMINS . "` `a` " . "WHERE " . ($userinfo['customers_see_all'] ? '' : " `c`.`adminid` = '" . (int)$userinfo['adminid'] . "' AND ") . "`c`.`adminid`=`a`.`adminid` " . $paging->getSqlWhere(true) . " " . $paging->getSqlOrderBy($settings['panel']['natsorting']) . " " . $paging->getSqlLimit());
 		$paging->setEntries($db->num_rows($result));
 		$sortcode = $paging->getHtmlSortCode($lng, true);
-		$arrowcode = $paging->getHtmlArrowCode($filename . '?page=' . $page . '&s=' . $s);
+		$arrowcode = $paging->getHtmlArrowCode($filename . '?page=' . $page);
 		$searchcode = $paging->getHtmlSearchCode($lng);
-		$pagingcode = $paging->getHtmlPagingCode($filename . '?page=' . $page . '&s=' . $s);
+		$pagingcode = $paging->getHtmlPagingCode($filename . '?page=' . $page);
 		$i = 0;
 		$count = 0;
 
@@ -142,7 +142,7 @@ if($page == 'customers'
 					&& $row['lastlogin_fail'] > (time() - $settings['login']['deactivatetime'])
 				) {
 					$column_style = ' style="background-color: #f99122;"';
-					$unlock_link = '<a href="'.$filename.'?s='.$s.'&amp;page='.$page.'&amp;action=unlock&amp;id='.$row['customerid'].'">'.$lng['panel']['unlock'].'</a><br />';
+					$unlock_link = '<a href="'.$filename.'?page='.$page.'&amp;action=unlock&amp;id='.$row['customerid'].'">'.$lng['panel']['unlock'].'</a><br />';
 				}
 
 				$row = str_replace_array('-1', 'UL', $row, 'diskspace traffic mysqls emails email_accounts email_forwarders ftps tickets subdomains email_autoresponder');
@@ -167,9 +167,10 @@ if($page == 'customers'
 		{
 			$result = $db->query_first("SELECT * FROM `" . TABLE_PANEL_SESSIONS . "` WHERE `userid`='" . (int)$userinfo['userid'] . "' AND `hash`='" . $db->escape($s) . "'");
 			$s = md5(uniqid(microtime(), 1));
+			$_SESSION['user_s']=$s;
 			$db->query("INSERT INTO `" . TABLE_PANEL_SESSIONS . "` (`hash`, `userid`, `ipaddress`, `useragent`, `lastactivity`, `language`, `adminsession`) VALUES ('" . $db->escape($s) . "', '" . (int)$id . "', '" . $db->escape($result['ipaddress']) . "', '" . $db->escape($result['useragent']) . "', '" . time() . "', '" . $db->escape($result['language']) . "', '0')");
 			$log->logAction(ADM_ACTION, LOG_INFO, "switched user and is now '" . $destination_user . "'");
-			redirectTo('customer_index.php', Array('s' => $s));
+			redirectTo('customer_index.php');
 		}
 		else
 		{
@@ -193,7 +194,7 @@ if($page == 'customers'
 				WHERE
 					`customerid`= '" . (int)$id . "'"
 				);
-				redirectTo($filename, Array('page' => $page, 's' => $s));
+				redirectTo($filename, Array('page' => $page));
 			}
 			else
 			{
@@ -376,7 +377,7 @@ if($page == 'customers'
 					}
 				}
 
-				redirectTo($filename, Array('page' => $page, 's' => $s));
+				redirectTo($filename, Array('page' => $page));
 			}
 			else
 			{

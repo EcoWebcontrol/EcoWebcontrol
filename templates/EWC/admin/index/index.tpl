@@ -148,7 +148,7 @@ $header
 			<td>{$version}{$branding}</td>
 		</tr>
 		
-		<if $updateserveroffline == 'true'>
+		<if $updateserveroffline == TRUE>
 			<tr>
 				<td>{$lng['admin']['latestversion']}:</td>
 					<td>-</td>
@@ -159,7 +159,7 @@ $header
 			</tr>
 		</if>
 
-		<if $updateserveroffline == 'false'>
+		<if $updateserveroffline == FALSE>
 			<tr>
 				<td>{$lng['admin']['latestversion']}:</td>
 				<if $isnewerversion != 0 >

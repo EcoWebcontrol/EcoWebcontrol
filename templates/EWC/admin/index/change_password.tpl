@@ -2,7 +2,7 @@ $header
 	<article>
 		<header>
 			<h2>
-				{$title}
+				{$lng['menue']['main']['changepassword']}
 			</h2>
 		</header>
 

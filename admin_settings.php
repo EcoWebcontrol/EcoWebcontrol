@@ -245,11 +245,8 @@ elseif ($page == 'languages') {
 			}
 			elseif ($_GET['action'] == 'deactive') {
 				$result = $db->query("SELECT `active` from ".TABLE_PANEL_LANGUAGE);
-				$active_lngs=0;
-				while ($count_language =  $db->fetch_array($result)){
-					if ($count_language['active'] == 1) {
-						$active_lngs++;
-					}
+				while ($language =  $db->fetch_array($db_languages)){
+					
 				}
 				if ($active_lngs >= 1) {
 					$db->query("UPDATE `".TABLE_PANEL_LANGUAGE."` SET `active`=0 WHERE language='".$db->escape($_GET['language'])."'");
@@ -263,7 +260,7 @@ elseif ($page == 'languages') {
 		$db_languages = $db->query("SELECT `language`, `active` FROM `".TABLE_PANEL_LANGUAGE);
 		$languages ='';
 		$languages = '<tr><td><h3>'.$lng['login']['language'].'</h3></td><td><h3>'.$lng['panel']['active'].'</h3></td><td>'.$lng['panel']['options'].'</td></tr>';
-		while ($language =  $db->fetch_array($db_languages))
+		while ($language = $db->fetch_array($db_languages))
 			{
 			  $languages .= "<tr>";
 			  $languages .= "<td>". $language['language'] . "</td>";

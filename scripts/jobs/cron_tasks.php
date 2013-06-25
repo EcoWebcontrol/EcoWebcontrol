@@ -216,9 +216,7 @@ while($row = $db->fetch_array($result_tasks))
 			safe_exec('mkdir -p ' . escapeshellarg($usermaildir));
 
 			//check if admin of customer has added template for new customer directories
-			if((int)$row['data']['store_defaultindex'] != 0){
-				storeDefaultIndex($row['data']['loginname'], $userhomedir, $cronlog, $row['data']['store_defaultindex']);
-			}
+			storeDefaultIndex($row['data']['loginname'], $userhomedir, $cronlog, $row['data']['store_defaultindex']);
 
 			// strip of last slash of paths to have correct chown results
 			$userhomedir = (substr($userhomedir, 0, -1) == '/') ? substr($userhomedir, 0, -1) : $userhomedir;

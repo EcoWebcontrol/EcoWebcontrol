@@ -38,7 +38,7 @@ if($action == 'logout')
 	{
 		$db->query("DELETE FROM `" . TABLE_PANEL_SESSIONS . "` WHERE `userid` = '" . (int)$userinfo['customerid'] . "' AND `adminsession` = '0'");
 	}
-
+	session_destroy();
 	redirectTo('index.php');
 	exit;
 }
@@ -168,7 +168,7 @@ elseif($page == 'change_language')
 			$log->logAction(USR_ACTION, LOG_NOTICE, "changed default language to '" . $def_language . "'");
 		}
 
-		redirectTo($filename, Array('s' => $s));
+		redirectTo($filename);
 	}
 	else
 	{
@@ -197,7 +197,7 @@ elseif($page == 'change_theme')
 		$db->query("UPDATE `" . TABLE_PANEL_CUSTOMERS . "` SET `theme`='" . $db->escape($theme) . "' WHERE `customerid`='" . (int)$userinfo['customerid'] . "'");
 		$db->query("UPDATE `" . TABLE_PANEL_SESSIONS . "` SET `theme`='" . $db->escape($theme) . "' WHERE `hash`='" . $db->escape($s) . "'");
 		$log->logAction(USR_ACTION, LOG_NOTICE, "changed default theme to '" . $theme . "'");
-		redirectTo($filename, Array('s' => $s));
+		redirectTo($filename);
 	}
 	else
 	{

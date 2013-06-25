@@ -288,6 +288,10 @@ return array (
 					'url' => 'admin_settings.php?page=languages',
 					'label' => $lng['aps']['languages'],
 				),
+				array (
+					'url' => 'admin_settings.php?page=languages',
+					'label' => $lng['aps']['languages'],
+				),
 			),
 		),
 		'api' => array (

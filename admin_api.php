@@ -28,9 +28,7 @@
         }
  
  	require ("./lib/init.php");
-	include './lib/userdata.inc.php';
-	
-	$page = $_GET['page'];
+
 	if ($page == 'key') {
 		if ($action == 'add') {
 				$key1=generate_password('40');
@@ -48,7 +46,7 @@
 					$api_keys .= '<td>'.substr($row['key_1'], 0, -15)."***************"."</td>";
 					$api_keys .= '<td>'.substr($row['key_2'], 0, -15)."***************"."</td>";
 					$api_keys .= '<td>'.$row['user']."</td>";
-					$api_keys .= "<td></td>";
+					$api_keys .= "<td><i class=\"icon-trash\"></i></td>";
 					$api_keys .= '</tr>';
 				}
 				unset($result,$row);
@@ -58,8 +56,8 @@
 			
 		}
 		
-		elseif($page == 'doc'){
-			eval("echo \"" . getTemplate("api/doc") . "\";");
-		}
+	elseif($page == 'doc'){
+		eval("echo \"" . getTemplate("api/doc") . "\";");
+	}
  
 ?>
