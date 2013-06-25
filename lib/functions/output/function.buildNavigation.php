@@ -77,22 +77,6 @@ function buildNavigation($navigation, $userinfo)
 								$element['modal'] = true;
 							// append sid only to local
 					
-					
-							if(!preg_match('/^https?\:\/\//', $element['url'])
-							   && (isset($userinfo['hash']) && $userinfo['hash'] != ''))
-							{
-								// generate sid with ? oder &
-					
-								if(strpos($element['url'], '?') !== false)
-								{
-									$element['url'].= '&s=' . $userinfo['hash'];
-								}
-								else
-								{
-									$element['url'].= '?s=' . $userinfo['hash'];
-								}
-							}
-					
 							$target = '';
 					
 							if(isset($element['new_window']) && $element['new_window'] == true)
@@ -123,22 +107,6 @@ function buildNavigation($navigation, $userinfo)
 					if(isset($box['url']) && trim($box['url']) != '')
 					{
 						// append sid only to local
-				
-						if(!preg_match('/^https?\:\/\//', $box['url'])
-						   && (isset($userinfo['hash']) && $userinfo['hash'] != ''))
-						{
-							// generate sid with ? oder &
-				
-							if(strpos($box['url'], '?') !== false)
-							{
-								$box['url'].= '&s=' . $userinfo['hash'];
-							}
-							else
-							{
-								$box['url'].= '?s=' . $userinfo['hash'];
-							}
-						}
-				
 						$target = '';
 				
 						if(isset($box['new_window']) && $box['new_window'] == true)
@@ -180,23 +148,7 @@ function buildNavigation($navigation, $userinfo)
 						{
 							if(isset($element['url']) && trim($element['url']) != '')
 							{
-								// append sid only to local
-						
-								if(!preg_match('/^https?\:\/\//', $element['url'])
-								   && (isset($userinfo['hash']) && $userinfo['hash'] != ''))
-								{
-									// generate sid with ? oder &
-						
-									if(strpos($element['url'], '?') !== false)
-									{
-										$element['url'].= '&s=' . $userinfo['hash'];
-									}
-									else
-									{
-										$element['url'].= '?s=' . $userinfo['hash'];
-									}
-								}
-						
+													
 								$target = '';
 						
 								if(isset($element['new_window']) && $element['new_window'] == true)
@@ -220,21 +172,6 @@ function buildNavigation($navigation, $userinfo)
 						if(isset($box['url']) && trim($box['url']) != '')
 						{
 							// append sid only to local
-					
-							if(!preg_match('/^https?\:\/\//', $box['url'])
-							   && (isset($userinfo['hash']) && $userinfo['hash'] != ''))
-							{
-								// generate sid with ? oder &
-					
-								if(strpos($box['url'], '?') !== false)
-								{
-									$box['url'].= '&s=' . $userinfo['hash'];
-								}
-								else
-								{
-									$box['url'].= '?s=' . $userinfo['hash'];
-								}
-							}
 					
 							$target = '';
 					

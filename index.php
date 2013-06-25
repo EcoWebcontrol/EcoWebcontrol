@@ -154,7 +154,7 @@ if($action == 'login' or $action == '')
 		&& $userinfo['userid'] != '')
 		{
 			$s = md5(uniqid(microtime(), 1));
-
+			$_SESSION['s']=$s;
 			if(isset($_POST['language']))
 			{
 				$language = validate($_POST['language'], 'language');
@@ -168,8 +168,7 @@ if($action == 'login' or $action == '')
 					$language = $settings['panel']['standardlanguage'];
 				}
 			}
-			else
-			{
+			else{
 				$language = $settings['panel']['standardlanguage'];
 			}
 
@@ -204,18 +203,18 @@ if($action == 'login' or $action == '')
 			{
 				if(hasUpdates($version))
 				{
-					redirectTo('admin_updates.php', Array('s' => $s), true);
+					redirectTo('admin_updates.php', '', true);
 					exit;
 				}
 				else
 				{
-					redirectTo('admin_index.php', Array('s' => $s), true);
+					redirectTo('admin_index.php', '', true);
 					exit;
 				}
 			}
 			else
 			{
-				redirectTo('customer_index.php', Array('s' => $s), true);
+				redirectTo('customer_index.php', '', true);
 				exit;
 			}
 		}

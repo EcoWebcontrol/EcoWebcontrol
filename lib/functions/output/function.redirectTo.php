@@ -44,11 +44,11 @@ function redirectTo($destination, $get_variables = array(), $isRelative = false)
 	{
 		if (isset($get_variables['s']))
 		{
-			$linker = new linker($destination, $get_variables['s']);
+			$linker = new linker($destination);
 		}
 		else
 		{
-			$linker = new linker($destination, $s);
+			$linker = new linker($destination);
 		}
 
 		foreach($get_variables as $key => $value)

@@ -52,9 +52,9 @@ if($page == 'cronjobs'
 		$result = $db->query("SELECT `c`.* FROM `" . TABLE_PANEL_CRONRUNS . "` `c` ORDER BY `cronfile` ASC");
 		$paging->setEntries($db->num_rows($result));
 		$sortcode = $paging->getHtmlSortCode($lng);
-		$arrowcode = $paging->getHtmlArrowCode($filename . '?page=' . $page . '&s=' . $s);
+		$arrowcode = $paging->getHtmlArrowCode($filename . '?page=' . $page );
 		$searchcode = $paging->getHtmlSearchCode($lng);
-		$pagingcode = $paging->getHtmlPagingCode($filename . '?page=' . $page . '&s=' . $s);
+		$pagingcode = $paging->getHtmlPagingCode($filename . '?page=' . $page );
 
 		$i = 0;
 		$count = 0;
@@ -120,7 +120,7 @@ if($page == 'cronjobs'
 							`interval` = '".$interval."'
 							WHERE `id` = '" . (int)$id . "'");
 
-				redirectTo($filename, Array('page' => $page, 's' => $s));
+				redirectTo($filename, Array('page' => $page));
 			}
 			else
 			{

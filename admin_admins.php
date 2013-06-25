@@ -75,9 +75,9 @@ if($page == 'admins'
 		$result = $db->query("SELECT * FROM `" . TABLE_PANEL_ADMINS . "` " . $paging->getSqlWhere(false) . " " . $paging->getSqlOrderBy() . " " . $paging->getSqlLimit());
 		$paging->setEntries($db->num_rows($result));
 		$sortcode = $paging->getHtmlSortCode($lng, true);
-		$arrowcode = $paging->getHtmlArrowCode($filename . '?page=' . $page . '&s=' . $s);
+		$arrowcode = $paging->getHtmlArrowCode($filename . '?page=' . $page);
 		$searchcode = $paging->getHtmlSearchCode($lng);
-		$pagingcode = $paging->getHtmlPagingCode($filename . '?page=' . $page . '&s=' . $s);
+		$pagingcode = $paging->getHtmlPagingCode($filename . '?page=' . $page);
 		$i = 0;
 		$count = 0;
 
@@ -136,7 +136,7 @@ if($page == 'admins'
 			$s = md5(uniqid(microtime(), 1));
 			$db->query("INSERT INTO `" . TABLE_PANEL_SESSIONS . "` (`hash`, `userid`, `ipaddress`, `useragent`, `lastactivity`, `language`, `adminsession`) VALUES ('" . $db->escape($s) . "', '" . (int)$id . "', '" . $db->escape($result['ipaddress']) . "', '" . $db->escape($result['useragent']) . "', '" . time() . "', '" . $db->escape($result['language']) . "', '1')");
 			$log->logAction(ADM_ACTION, LOG_INFO, "switched adminuser and is now '" . $destination_admin . "'");
-			redirectTo('admin_index.php', Array('s' => $s));
+			redirectTo('admin_index.php');
 		}
 		else
 		{
@@ -165,7 +165,7 @@ if($page == 'admins'
 				$db->query("UPDATE `" . TABLE_PANEL_DOMAINS . "` SET `adminid` = '" . (int)$userinfo['userid'] . "' WHERE `adminid` = '" . (int)$id . "'");
 				$log->logAction(ADM_ACTION, LOG_INFO, "deleted admin '" . $result['loginname'] . "'");
 				updateCounters();
-				redirectTo($filename, Array('page' => $page, 's' => $s));
+				redirectTo($filename, Array('page' => $page));
 			}
 			else
 			{
@@ -431,7 +431,7 @@ if($page == 'admins'
 				");
 				$adminid = $db->insert_id();
 				$log->logAction(ADM_ACTION, LOG_INFO, "added admin '" . $loginname . "'");
-				redirectTo($filename, Array('page' => $page, 's' => $s));
+				redirectTo($filename, Array('page' => $page));
 			}
 		}
 		else
@@ -731,7 +731,7 @@ if($page == 'admins'
 					$log->logAction(ADM_ACTION, LOG_INFO, "edited admin '#" . $id . "'");
 					$redirect_props = Array(
 						'page' => $page,
-						's' => $s
+						
 					);
 
 					redirectTo($filename, $redirect_props);
