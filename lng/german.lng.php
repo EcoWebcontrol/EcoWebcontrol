@@ -1669,6 +1669,14 @@ $lng['panel']['enable'] = 'Aktivieren';
 $lng['panel']['disable'] = 'Deaktivieren';
 $lng['panel']['manage_lng'] = 'Sprachen verwalten';
 $lng['gameserver']['headline'] = 'Gameserver';
+$lng['gameserver']['start']='Starten';
+$lng['gameserver']['stop']='Stop';
+$lng['gameserver']['restart']='Neustarten';
+$lng['gameserver']['new_gameserver']='Neuen Gameserver hinzufügen';
+$lng['gameserver']['server_id']='Server ID';
+$lng['gameserver']['game']='Game';
+$lng['gameserver']['select']['game']='Bitte Game auswählen';
+$lng['gameserver']['games']='Games';
 
 //Aaron
 $lng['error']['updateserveroffline'] = 'Der Update-Server ist momentan nicht erreichbar. Es kann nicht nachgeprüft werden, ob es eine neuere Version gibt.';

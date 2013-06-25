@@ -58,6 +58,7 @@ define('TABLE_PANEL_DOMDOCROOTSETTINGS', 'domain_docrootsettings');
 define('TABLE_API_KEY', 'api_key'); //Tabel for new API-Key´s
 define('TABLE_MULTISERVER', 'api_multiserver'); //Table for new Multiserver
 define('TABEL_GAMESERVER', 'game_server'); //Tabel for Gameserver-control
+define('GAMESERVER_GAMES', 'game_games');
 
 
 /* +++ New Extensions Tables */
