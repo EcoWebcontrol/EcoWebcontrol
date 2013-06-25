@@ -17,7 +17,7 @@
  * @license    GPLv2 http://eco-webcontrol.com/files/COPYING.txt
  *
  */
-
+session_start();
 header("Content-Type: text/html; charset=UTF-8");
 
 // prevent Froxlor pages from being cached
@@ -134,23 +134,6 @@ if(!isset($need_root_db_sql_data) || $need_root_db_sql_data !== true)
 	$sql_root = array();
 }
 
-if(is_array($need_ssh) || $need_ssh['use'] == true)
-{
-	if (isset($need_ssh['host']) and $need_ssh['host'] != 'localhost' and $need_shh['user'] != '' and $need_ssh['password'] != '') {
-		$open_ssh['session'] = ssh2_connect($need_ssh['host'], 22);
-		ssh2_auth_password($open_ssh['session'], 'username', 'password');
-		unset($open_ssh['password']);
-		unset($open_ssh['user']);
-	}
-	else {
-		$open_ssh['session'] = ssh2_connect('localhost', 22);
-		ssh2_auth_password($open_ssh['session'], 'username', 'password');
-	}	
-}
-else {
-	unset($need_ssh);
-	$open_ssh['session'] = FALSE;
-}
 
 /**
  * Create a new idna converter
@@ -216,14 +199,9 @@ unset($customerid);
 unset($adminid);
 unset($s);
 
-if(isset($_POST['s']))
+if(isset($_SESSION['s']))
 {
-	$s = $_POST['s'];
-	$nosession = 0;
-}
-elseif(isset($_GET['s']))
-{
-	$s = $_GET['s'];
+	$s = $_SESSION['s'];
 	$nosession = 0;
 }
 else
@@ -236,15 +214,8 @@ $timediff = time() - $settings['session']['sessiontimeout'];
 $db->query('DELETE FROM `' . TABLE_PANEL_SESSIONS . '` WHERE `lastactivity` < "' . (int)$timediff . '"');
 $userinfo = Array();
 
-if(isset($s)
-   && $s != ""
-   && $nosession != 1)
+if(isset($s) && $s != "" && $nosession != 1)
 {
-	ini_set("session.name", "s");
-	ini_set("url_rewriter.tags", "");
-	ini_set("session.use_cookies", false);
-	session_id($s);
-	session_start();
 	$query = 'SELECT `s`.*, `u`.* FROM `' . TABLE_PANEL_SESSIONS . '` `s` LEFT JOIN `';
 
 	if(AREA == 'admin')
@@ -364,8 +335,8 @@ if($language != 'English')
 
 // Initialize our new link - class
 
-$linker = new linker('index.php', $s);
-$index_url = AREA.'_index.php?s='.$s;
+$linker = new linker('index.php');
+$index_url = AREA.'_index.php';
 
 /**
  * global Theme-variable
