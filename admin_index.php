@@ -38,7 +38,7 @@ if($action == 'logout')
 	{
 		$db->query("DELETE FROM `" . TABLE_PANEL_SESSIONS . "` WHERE `userid` = '" . (int)$userinfo['adminid'] . "' AND `adminsession` = '1'");
 	}
-
+	session_destroy();
 	redirectTo('index.php');
 	exit;
 }
@@ -85,56 +85,55 @@ if($page == 'overview')
 	$mysqlclientversion = mysql_get_client_info();
 	$webserverinterface = strtoupper(@php_sapi_name());
 
-		$updateserveroffline = 'false';
-		$domain = 'eco-webcontrol.com';
-		$update_check_uri = 'http://'.$domain.'/repo/version/version.php?version=' . $version;
+	$updateserveroffline = TRUE;
+	$domain = 'eco-webcontrol.com';
+	$update_check_uri = 'http://'.$domain.'/repo/version/version.php?version=' . $version;
 
-		if(ini_get('allow_url_fopen'))
+	if(ini_get('allow_url_fopen'))
+	{
+		$update_port = 80;
+		$update_timeout = 3;
+		
+		if(fsockopen($domain, $update_port, $update_timeout) != FALSE)
 		{
-			$update_port = 80;
-			$update_timeout = 3;
+			$latestversion = @file($update_check_uri);
 			
-			if(fsockopen($domain, $update_port, $update_timeout) != FALSE)
+
+			if (isset($latestversion[0]))
 			{
-				$latestversion = @file($update_check_uri);
-				
+				$latestversion = explode('|', $latestversion[0]);
 
-				if (isset($latestversion[0]))
-				{
-					$latestversion = explode('|', $latestversion[0]);
+				if(is_array($latestversion)&& count($latestversion) >= 1){
+					$_version = $latestversion[0];
+					$_message = isset($latestversion[1]) ? $latestversion[1] : '';
+					$_link = isset($latestversion[2]) ? $latestversion[2] : htmlspecialchars($filename . '?s=' . urlencode($s) . '&page=' . urlencode($page) . '&lookfornewversion=yes');
 
-					if(is_array($latestversion)
-					&& count($latestversion) >= 1)
-					{
-						$_version = $latestversion[0];
-						$_message = isset($latestversion[1]) ? $latestversion[1] : '';
-						$_link = isset($latestversion[2]) ? $latestversion[2] : htmlspecialchars($filename . '?s=' . urlencode($s) . '&page=' . urlencode($page) . '&lookfornewversion=yes');
+					$lookfornewversion_lable = $_version;
+					$lookfornewversion_link = $_link;
+					$lookfornewversion_addinfo = $_message;
 
-						$lookfornewversion_lable = $_version;
-						$lookfornewversion_link = $_link;
-						$lookfornewversion_addinfo = $_message;
-
-						if (version_compare($version, $_version) == -1) {
-							$isnewerversion = 1;
-						} else {
-							$isnewerversion = 0;
-						}
+					if (version_compare($version, $_version) == -1) {
+						$isnewerversion = 1;
+						$updateserveroffline = TRUE;
+					} else {
+						$isnewerversion = 0;
+						$updateserveroffline = TRUE;
 					}
-					else {
-						redirectTo($update_check_uri, NULL);
-					}
-					}			
+				}
+				else {
+					redirectTo($update_check_uri, NULL);
+				}
+			}			
 			else {
 				redirectTo($update_check_uri, NULL);
 			}
-		
+	
 		}
 		else {
-			redirectTo($update_check_uri, NULL);
+			$updateserveroffline = FALSE;
 		}
-		
-	
-
+		$updateserveroffline = FALSE;
+	}
 	$userinfo['diskspace'] = round($userinfo['diskspace'] / 1024, $settings['panel']['decimal_places']);
 	$userinfo['diskspace_used'] = round($userinfo['diskspace_used'] / 1024, $settings['panel']['decimal_places']);
 	$userinfo['traffic'] = round($userinfo['traffic'] / (1024 * 1024), $settings['panel']['decimal_places']);
@@ -219,9 +218,8 @@ if($page == 'overview')
 	$phpinfo = ob_get_contents () ;
 	ob_end_clean () ;
 	$phpinfo = preg_replace ( '%^.*<body>(.*)</body>.*$%ms', '$1', $phpinfo );
-
 	eval("echo \"" . getTemplate("index/index") . "\";");
-	}
+}
 elseif($page == 'change_password')
 {
 	if(isset($_POST['send'])
@@ -329,5 +327,4 @@ elseif($page == 'change_theme')
 
 		eval("echo \"" . getTemplate("index/change_theme") . "\";");
 	}
-}
 }
