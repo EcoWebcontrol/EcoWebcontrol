@@ -17,7 +17,7 @@
  * @license    GPLv2 http://eco-webcontrol.com/files/COPYING.txt
  *
  */
-
+error_reporting(E_ALL);
 // Configuration
 // Server to connect to:
 $server = 'localhost';
@@ -74,7 +74,7 @@ if(function_exists("date_default_timezone_set") && function_exists("date_default
 // Load the database - connection parameters
 if(!file_exists('./lib/userdata.inc.php'))
 {
-	$config_hint = file_get_contents('./templates/Froxlor/misc/configurehint.tpl');
+	$config_hint = file_get_contents('./templates/EWC/misc/configurehint.tpl');
 	die($config_hint);
 }
 
@@ -87,7 +87,7 @@ require ('./lib/userdata.inc.php');
 
 if(!isset($sql) || !is_array($sql))
 {
-	$config_hint = file_get_contents('./templates/Froxlor/misc/configurehint.tpl');
+	$config_hint = file_get_contents('./templates/EWC/misc/configurehint.tpl');
 	die($config_hint);
 }
 
@@ -121,7 +121,7 @@ else
 $settings['panel']['default_theme'] = 'Froxlor';
 
 // Initialize Smarty
-include('./lib/classes/Smarty/Smarty.class.php');
+include('./lib/classes/Smarty-3.0.8/libs/Smarty.class.php');
 $smarty = new Smarty;
 
 $smarty->template_dir = './templates/' . $settings['panel']['default_theme'] . '/';

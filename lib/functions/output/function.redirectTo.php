@@ -38,19 +38,12 @@
 
 function redirectTo($destination, $get_variables = array(), $isRelative = false)
 {
-	global $s, $theme;
+	global $theme;
 
 	if(is_array($get_variables))
 	{
-		if (isset($get_variables['s']))
-		{
-			$linker = new linker($destination);
-		}
-		else
-		{
-			$linker = new linker($destination);
-		}
-
+		$linker = new linker($destination);
+		
 		foreach($get_variables as $key => $value)
 		{
 			$linker->add($key, $value);

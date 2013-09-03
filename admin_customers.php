@@ -904,7 +904,7 @@ if($page == 'customers'
 						$log->logAction(ADM_ACTION, LOG_NOTICE, "automatically sent password to user '" . $loginname . "'");
 					}
 
-					redirectTo($filename, Array('page' => $page, 's' => $s));
+					redirectTo($filename, Array('page' => $page));
 				}
 			}
 			else
@@ -944,7 +944,7 @@ if($page == 'customers'
 						$gen_index .= makeoption($lng['admin']['templates']['index_php'], $zeile['varname'], null, true, true);
 					}
 					else {
-						$gen_index .= makeoption($zeile, $zeile['varname'], null, true, true);
+						$gen_index .= makeoption($zeile['varname'], $zeile['varname'], null, true, true);
 					}
 				}
 				

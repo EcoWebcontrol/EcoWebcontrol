@@ -403,7 +403,7 @@ class ApsParser
 						{
 							//remove package if number of package instances is 0
 
-							self::UnlinkRecursive('./packages/' . $Row['Path']);
+							self::UnlinkRecursive('./packages/aps/' . $Row['Path']);
 							$this->db->query('DELETE FROM `' . TABLE_APS_PACKAGES . '` WHERE `ID` = ' . $Row['ID']);
 						}
 					}
@@ -440,7 +440,7 @@ class ApsParser
 						{
 							//remove package if number of package instances is 0
 
-							self::UnlinkRecursive('./packages/' . $Row['Path']);
+							self::UnlinkRecursive('./packages/aps/' . $Row['Path']);
 							$this->db->query('DELETE FROM `' . TABLE_APS_PACKAGES . '` WHERE `ID` = ' . $Row['ID']);
 						}
 					}
@@ -492,7 +492,7 @@ class ApsParser
 						if(isset($_POST['answer'])
 						   && $_POST['answer'] == $lng['panel']['yes'])
 						{
-							self::UnlinkRecursive('./packages/' . $Row['Path']);
+							self::UnlinkRecursive('./packages/aps/' . $Row['Path']);
 							$this->db->query('DELETE FROM `' . TABLE_APS_PACKAGES . '` WHERE `ID` = ' . $Row['ID']);
 						}
 					}
@@ -858,7 +858,7 @@ class ApsParser
 			$Data = '';
 			$result2 = $this->db->query('SELECT * FROM `' . TABLE_APS_PACKAGES . '` WHERE `ID` = ' . $this->db->escape($Row['PackageID']));
 			$Row2 = $this->db->fetch_array($result2);
-			$Xml = self::GetXmlFromFile('./packages/' . $Row2['Path'] . '/APP-META.xml');
+			$Xml = self::GetXmlFromFile('./packages/aps/' . $Row2['Path'] . '/APP-META.xml');
 
 			//skip if parse of xml has failed
 
@@ -882,7 +882,7 @@ class ApsParser
 
 			if($iconpath)
 			{
-				$Icon = './packages/' . $Row2['Path'] . '/' . basename($iconpath);
+				$Icon = './packages/aps/' . $Row2['Path'] . '/' . basename($iconpath);
 			}
 
 			$Fieldname = $lng['aps']['version'];
@@ -1037,7 +1037,7 @@ class ApsParser
 
 		$result = $this->db->query('SELECT * FROM `' . TABLE_APS_PACKAGES . '` WHERE `ID` = ' . $this->db->escape($PackageId));
 		$Row = $this->db->fetch_array($result);
-		$Xml = self::GetXmlFromFile('./packages/' . $Row['Path'] . '/APP-META.xml');
+		$Xml = self::GetXmlFromFile('./packages/aps/' . $Row['Path'] . '/APP-META.xml');
 
 		//return if parse of xml file has failed
 
@@ -1609,7 +1609,7 @@ class ApsParser
 			{
 				//install package in system, all checks succeeded
 
-				$Destination = './packages/' . basename($Filename) . '/';
+				$Destination = './packages/aps/' . basename($Filename) . '/';
 
 				//create package directory
 
@@ -1724,12 +1724,19 @@ class ApsParser
 			$Error.= '<li>' . $lng['aps']['class_zip_missing'] . '</li>';
 		}
 
-		if(!is_writable($this->RootDir.'tmp/')
-		   || !is_writable($this->RootDir.'packages/'))
+		if(!is_writable($this->RootDir.'tmp/') || !is_writable($this->RootDir.'packages/'))
 		{
-			mkdir($this->RootDir.'tmp/', 0755);
-			mkdir($this->RootDir.'packages/', 0755);
-			if(!is_writable($this->RootDir.'tmp/') || !is_writable($this->RootDir.'packages/')){
+			if(!is_writable($this->RootDir.'tmp/')){
+				mkdir($this->RootDir.'tmp', 0755);
+			}
+			if(!is_writable($this->RootDir.'packages/')){
+				mkdir($this->RootDir.'packages', 0755);
+			}
+			if(!is_writable($this->RootDir.'/packages/aps/')){
+				mkdir($this->RootDir.'packages/aps', 0755);
+			}
+			
+			if(!is_writable($this->RootDir.'tmp/') || !is_writable($this->RootDir.'packages/aps/')){
 		   		$dirpermission = str_replace('{$path}', $this->RootDir, $lng['aps']['dir_permissions']);
 				$Error.= '<li>' . $dirpermission . '</li>';
 		   }
@@ -2424,7 +2431,7 @@ class ApsParser
 		if(!self::IsValidPackageId($PackageId, true))return false;
 		$result = $this->db->query('SELECT * FROM `' . TABLE_APS_PACKAGES . '` WHERE `ID` = ' . $this->db->escape($PackageId));
 		$Row = $this->db->fetch_array($result);
-		$Xml = self::GetXmlFromFile('./packages/' . $Row['Path'] . '/APP-META.xml');
+		$Xml = self::GetXmlFromFile('./packages/aps/' . $Row['Path'] . '/APP-META.xml');
 
 		//return if parse of xml file has failed
 
@@ -2810,7 +2817,7 @@ class ApsParser
 		if(!self::IsValidPackageId($PackageId, true))return false;
 		$result = $this->db->query('SELECT * FROM `' . TABLE_APS_PACKAGES . '` WHERE `ID` = ' . $this->db->escape($PackageId));
 		$Row = $this->db->fetch_array($result);
-		$Xml = self::GetXmlFromFile('./packages/' . $Row['Path'] . '/APP-META.xml');
+		$Xml = self::GetXmlFromFile('./packages/aps/' . $Row['Path'] . '/APP-META.xml');
 
 		//return if parse of xml file has failed
 
@@ -2842,7 +2849,7 @@ class ApsParser
 
 		if($iconpath)
 		{
-			$Icon = './packages/' . $Row['Path'] . '/' . basename($iconpath);
+			$Icon = './packages/aps/' . $Row['Path'] . '/' . basename($iconpath);
 		}
 
 		//show error message if some input was wrong
@@ -3177,7 +3184,7 @@ class ApsParser
 				if($xml_license->text->file)
 				{
 					$Temp.= '<textarea name="text" rows="10" cols="55">';
-					$FileContent = file_get_contents('./packages/' . $Row['Path'] . '/license.txt');
+					$FileContent = file_get_contents('./packages/aps/' . $Row['Path'] . '/license.txt');
 					$Temp.= htmlentities($FileContent, ENT_QUOTES, 'UTF-8');
 					$Temp.= '</textarea>';
 					$Groupname = $lng['aps']['license'];
@@ -3231,7 +3238,7 @@ class ApsParser
 		if(!self::IsValidPackageId($PackageId, true))return false;
 		$result = $this->db->query('SELECT * FROM `' . TABLE_APS_PACKAGES . '` WHERE `ID` = ' . $this->db->escape($PackageId));
 		$Row = $this->db->fetch_array($result);
-		$Xml = self::GetXmlFromFile('./packages/' . $Row['Path'] . '/APP-META.xml');
+		$Xml = self::GetXmlFromFile('./packages/aps/' . $Row['Path'] . '/APP-META.xml');
 
 		//return if parse of xml file has failed
 
@@ -3266,7 +3273,7 @@ class ApsParser
 
 		if($iconpath)
 		{
-			$Icon = './packages/' . $Row['Path'] . '/' . basename($iconpath);
+			$Icon = './packages/aps/' . $Row['Path'] . '/' . basename($iconpath);
 		}
 
 		$Fieldname = $lng['aps']['version'];
@@ -3368,7 +3375,7 @@ class ApsParser
 
 					if($license->text->name)$Temp = $license->text->name . '<br/>';
 					$Temp.= '<form name="license" action="#"><textarea name="text" rows="10" cols="70">';
-					$FileContent = file_get_contents('./packages/' . $Row['Path'] . '/license.txt');
+					$FileContent = file_get_contents('./packages/aps/' . $Row['Path'] . '/license.txt');
 					$Temp.= htmlentities($FileContent, ENT_QUOTES, 'UTF-8');
 					$Temp.= '</textarea></form>';
 					$Fieldname = $lng['aps']['license'];
@@ -3392,7 +3399,7 @@ class ApsParser
 				foreach($screenshots as $Screenshot)
 				{
 					$Count+= 1;
-					$Temp.= '<img src="./packages/' . $Row['Path'] . '/' . basename($Screenshot['path']) . '" alt="' . $Screenshot->description . '"/><br/><em>' . $Screenshot->description . '</em><br/>';
+					$Temp.= '<img src="./packages/aps/' . $Row['Path'] . '/' . basename($Screenshot['path']) . '" alt="' . $Screenshot->description . '"/><br/><em>' . $Screenshot->description . '</em><br/>';
 
 					if(count($screenshots) != $Count)$Temp.= '<br/>';
 				}
