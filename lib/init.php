@@ -140,7 +140,7 @@ if(!isset($need_root_db_sql_data) || $need_root_db_sql_data !== true)
  */
 
 $idna_convert = new idna_convert_wrapper();
-
+$p = new PHPlot(900, 450);
 /**
  * disable magic_quotes_runtime if enabled
  */

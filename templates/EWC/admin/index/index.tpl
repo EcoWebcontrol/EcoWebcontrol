@@ -96,38 +96,38 @@ $header
 		</tr>
 		<tr>
 			<td>{$lng['admin']['phpversion']}:</td>
-			<td>$phpversion</td>
+			<td>{$dash['phpversion']}</td>
 		</tr>
 		<tr>
 			<td>{$lng['admin']['phpmemorylimit']}:</td>
-			<td>$phpmemorylimit</td>
+			<td>{$dash['phpmemorylimit']}</td>
 		</tr>
 		<tr>
 			<td>{$lng['admin']['mysqlserverversion']}:</td>
-			<td>$mysqlserverversion</td>
+			<td>{$dash['mysqlserverversion']}</td>
 		</tr>
 		<tr>
 			<td>{$lng['admin']['mysqlclientversion']}:</td>
-			<td>$mysqlclientversion</td>
+			<td>{$dash['mysqlclientversion']}</td>
 		</tr>
 		<tr>
 			<td>{$lng['admin']['webserverinterface']}:</td>
-			<td>$webserverinterface</td>
+			<td>{$dash['webserverinterface']}</td>
 		</tr>
 		<tr>
 			<td>{$lng['admin']['sysload']}:</td>
-			<td>$load</td>
+			<td>{$dash['load']}</td>
 		</tr>
 		<if $showkernel == 1>
 			<tr>
 				<td>Kernel:</td>
-				<td>$kernel</td>
+				<td>{$dash['kernel']}</td>
 			</tr>
 		</if>
 		<if $uptime != ''>
 		<tr>
 			<td>Uptime:</td>
-			<td>$uptime</td>
+			<td>{$dash['uptime']}</td>
 		</tr>
 		</if>
 		<if $localtime != ''>
@@ -136,6 +136,12 @@ $header
 			<td>$localtime</td>
 		</tr>
 		</if>
+		</table>
+		<table class="table table-bordered table-striped">
+		<tr>
+			<td><img src="?page=pic_states"></td>
+
+		</tr>
 		</table>
     </div>
         

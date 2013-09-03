@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of the EcoWebcontrol project.
  * Copyright (c) 2003-2009 the SysCP Team (see authors).
@@ -54,6 +53,7 @@ elseif(isset($_GET['id']))
 
 if($page == 'overview')
 {
+	
 	$log->logAction(ADM_ACTION, LOG_NOTICE, "viewed admin_index");
 	$overview = $db->query_first("SELECT COUNT(*) AS `number_customers`,
 				SUM(`diskspace_used`) AS `diskspace_used`,
@@ -71,19 +71,19 @@ if($page == 'overview')
 				FROM `" . TABLE_PANEL_CUSTOMERS . "`" . ($userinfo['customers_see_all'] ? '' : " WHERE `adminid` = '" . (int)$userinfo['adminid'] . "' "));
 	$overview['traffic_used'] = round($overview['traffic_used'] / (1024 * 1024), $settings['panel']['decimal_places']);
 	$overview['diskspace_used'] = round($overview['diskspace_used'] / 1024, $settings['panel']['decimal_places']);
-	$number_domains = $db->query_first("SELECT COUNT(*) AS `number_domains` FROM `" . TABLE_PANEL_DOMAINS . "` WHERE `parentdomainid`='0'" . ($userinfo['customers_see_all'] ? '' : " AND `adminid` = '" . (int)$userinfo['adminid'] . "' "));
+	$dash['number_domains'] = $db->query_first("SELECT COUNT(*) AS `number_domains` FROM `" . TABLE_PANEL_DOMAINS . "` WHERE `parentdomainid`='0'" . ($userinfo['customers_see_all'] ? '' : " AND `adminid` = '" . (int)$userinfo['adminid'] . "' "));
 	$overview['number_domains'] = $number_domains['number_domains'];
-	$phpversion = phpversion();
-	$phpmemorylimit = @ini_get("memory_limit");
+	$dash['phpversion'] = phpversion();
+	$dash['phpmemorylimit'] = @ini_get("memory_limit");
 
 	if($phpmemorylimit == "")
 	{
 		$phpmemorylimit = $lng['admin']['memorylimitdisabled'];
 	}
 
-	$mysqlserverversion = mysql_get_server_info();
-	$mysqlclientversion = mysql_get_client_info();
-	$webserverinterface = strtoupper(@php_sapi_name());
+	$dash['mysqlserverversion'] = mysql_get_server_info();
+	$dash['mysqlclientversion'] = mysql_get_client_info();
+	$dash['webserverinterface'] = strtoupper(@php_sapi_name());
 
 	$updateserveroffline = TRUE;
 	$domain = 'eco-webcontrol.com';
@@ -158,15 +158,15 @@ if($page == 'overview')
 	if(function_exists('sys_getloadavg'))
 	{
 		$loadArray = sys_getloadavg();
-		$load = number_format($loadArray[0], 2, '.', '') . " / " . number_format($loadArray[1], 2, '.', '') . " / " . number_format($loadArray[2], 2, '.', '');
+		$dash['load'] = number_format($loadArray[0], 2, '.', '') . " / " . number_format($loadArray[1], 2, '.', '') . " / " . number_format($loadArray[2], 2, '.', '');
 	}
 	else
 	{
-		$load = @file_get_contents('/proc/loadavg');
+		$dash['load'] = @file_get_contents('/proc/loadavg');
 
-		if(!$load)
+		if(!$dash['load'])
 		{
-			$load = $lng['admin']['noloadavailable'];
+			$dash['load'] = $lng['admin']['noloadavailable'];
 		}
 	}
 
@@ -174,16 +174,13 @@ if($page == 'overview')
 	{
 		$showkernel = 1;
 		$kernel_nfo = posix_uname();
-		$kernel = $kernel_nfo['release'] . ' (' . $kernel_nfo['machine'] . ')';
+		$dash['kernel'] = $kernel_nfo['release'] . ' (' . $kernel_nfo['machine'] . ')';
 	}
 	else
 	{
 		$showkernel = 0;
-		$kernel = '';
+		$dash['kernel'] = '';
 	}
-
-	// Try to get the uptime
-	// First: With exec (let's hope it's enabled for the Froxlor - vHost)
 
 	$uptime_array = explode(" ", @file_get_contents("/proc/uptime"));
 
@@ -200,7 +197,7 @@ if($page == 'overview')
 		$hours = floor($hours - ($days * 24));
 		$minutes = floor($minutes - ($days * 24 * 60) - ($hours * 60));
 		$seconds = floor($seconds - ($days * 24 * 60 * 60) - ($hours * 60 * 60) - ($minutes * 60));
-		$uptime = "{$days}d, {$hours}h, {$minutes}m, {$seconds}s";
+		$dash['uptime'] = "{$days}d, {$hours}h, {$minutes}m, {$seconds}s";
 
 		// Just cleanup
 
@@ -210,14 +207,20 @@ if($page == 'overview')
 	{
 		// Nothing of the above worked, show an error :/
 
-		$uptime = '';
+		$dash['uptime'] = '';
 	}
-	$localtime = date("d.m.Y H:i:s");
+	
+
+	$mem = getSystemMemInfo();
+	$dash['mem_pro'] = substr(100-$mem['MemFree']/$mem['MemTotal']*100, 0, 5);
 	ob_start () ;
-	phpinfo () ;
-	$phpinfo = ob_get_contents () ;
+		phpinfo () ;
+		$phpinfo = ob_get_contents () ;
 	ob_end_clean () ;
+	
 	$phpinfo = preg_replace ( '%^.*<body>(.*)</body>.*$%ms', '$1', $phpinfo );
+	$dash['localtime'] = date("d.m.Y H:i:s");
+
 	eval("echo \"" . getTemplate("index/index") . "\";");
 }
 elseif($page == 'change_password')
@@ -256,7 +259,7 @@ elseif($page == 'change_password')
 		{
 			$db->query("UPDATE `" . TABLE_PANEL_ADMINS . "` SET `password`='" . substr(sha1(md5($new_password).$new_password.sha1($new_password)),-30,15) . "' WHERE `adminid`='" . (int)$userinfo['adminid'] . "' AND `password`='" . substr(sha1(md5($old_password).$old_password.sha1($old_password)),-30,15) . "'");
 			$log->logAction(ADM_ACTION, LOG_NOTICE, 'changed password');
-			standard_success('passwordok');
+			standard_success_modular('passwordok');
 		}
 	}
 	else
@@ -327,4 +330,60 @@ elseif($page == 'change_theme')
 
 		eval("echo \"" . getTemplate("index/change_theme") . "\";");
 	}
+}
+elseif ($page == 'pic_states') {
+	# PHPlot Demo
+# 2009-12-01 ljb
+# For more information see http://sourceforge.net/projects/phplot/
+
+# Load the PHPlot class library:
+
+# Define the data array: Label, the 3 data sets.
+# Year,  Features, Bugs, Happy Users:
+$data = array(
+  array('2001',  60,  35,  20),
+  array('2002',  65,  30,  30),
+  array('2003',  70,  25,  40),
+  array('2004',  72,  20,  60),
+  array('2005',  75,  15,  70),
+  array('2006',  77,  10,  80),
+  array('2007',  80,   5,  90),
+  array('2008',  85,   4,  95),
+  array('2009',  90,   3,  98),
+);
+
+# Set the main plot title:
+$p->SetTitle('Server Load + Ram');
+
+# Select the data array representation and store the data:
+$p->SetDataType('text-data');
+$p->SetDataValues($data);
+
+# Select the plot type - bar chart:
+$p->SetPlotType('bars');
+
+# Define the data range. PHPlot can do this automatically, but not as well.
+$p->SetPlotAreaWorld(0, 0, 9, 100);
+
+# Select an overall image background color and another color under the plot:
+$p->SetBackgroundColor('#f9f9f9');
+$p->SetDrawPlotAreaBackground(True);
+$p->SetPlotBgColor('#ffffff');
+
+# Draw lines on all 4 sides of the plot:
+$p->SetPlotBorderType('full');
+
+# Set a 3 line legend, and position it in the upper left corner:
+$p->SetLegend(array('Ram Free', 'Load (5 Min)', 'Load (15 Min)'));
+$p->SetLegendWorld(0.1, 95);
+
+# Turn data labels on, and all ticks and tick labels off:
+$p->SetXDataLabelPos('plotdown');
+$p->SetXTickPos('none');
+$p->SetXTickLabelPos('none');
+$p->SetYTickPos('none');
+$p->SetYTickLabelPos('none');
+
+# Generate and output the graph now:
+$p->DrawGraph();
 }
