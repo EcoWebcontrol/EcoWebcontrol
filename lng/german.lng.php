@@ -1058,7 +1058,7 @@ $lng['aps']['notazipfile'] = 'Die hochgeladene Datei ist keine gültige ZIP-Date
 $lng['aps']['filetoobig'] = 'Die Datei ist zu groß.';
 $lng['aps']['filenotcomplete'] = 'Die Datei wurde nicht vollständig hochgeladen.';
 $lng['aps']['phperror'] = 'Es trat ein PHP interner Fehler auf. Der Upload Fehlercode lautet #';
-$lng['aps']['moveproblem'] = 'Die hochgeladene Datei konnte nicht aus dem temporären Ordner verschoben werden. Prüfen Sie ob alle Rechte korrekt gesetzt sind. Dies gilt insbesondere fü die Ordner {$path}temp/ und {$path}packages/.';
+$lng['aps']['moveproblem'] = 'Die hochgeladene Datei konnte nicht aus dem temporären Ordner verschoben werden. Prüfen Sie ob alle Rechte korrekt gesetzt sind. Dies gilt insbesondere fü die Ordner {$path}tmp/ und {$path}packages/.';
 $lng['aps']['uploaderrors'] = '<strong>Fehler für die Datei <em>%s</em></strong><br/><ul>%s</ul>';
 $lng['aps']['nospecialchars'] = 'Sonderzeichen sind im Suchausdruck nicht erlaubt!';
 $lng['aps']['noitemsfound'] = 'Es wurden keine Pakete gefunden!';
@@ -1108,7 +1108,7 @@ $lng['aps']['invalidzipfile'] = '<strong>Fehler für <em>%s</em></strong><br/><u
 $lng['aps']['successpackageupdate'] = '<strong><em>%s</em> erfolgreich als Paketupdate installiert</strong>';
 $lng['aps']['successpackageinstall'] = '<strong><em>%s</em> erfolgreich als neues Paket installiert</strong>';
 $lng['aps']['class_zip_missing'] = 'SimpleXML Klasse, exec Funktion oder ZIP Funktionen nicht vorhanden bzw. aktiviert! Für genauere Informationen zu diesem Problem schauen Sie bitte in das Handbuch zu diesem Modul.';
-$lng['aps']['dir_permissions'] = 'Der PHP bzw. Webserver Prozess muss Schreibrechte für {$path}temp/ und {$path}packages/ haben.';
+$lng['aps']['dir_permissions'] = 'Der PHP bzw. Webserver Prozess muss Schreibrechte für {$path}tmp/ und {$path}packages/ haben.';
 $lng['aps']['initerror'] = '<strong>Es gibt ein paar Probleme mit diesem Modul:</strong><ul>%s</ul>Beheben Sie diese Probleme oder das Modul kann nicht genutzt werden!';
 $lng['aps']['iderror'] = 'Es wurde eine falsche Id übergeben!';
 $lng['aps']['nopacketsforinstallation'] = 'Es wurden keine Pakete zur Installation gefunden.';
@@ -1677,6 +1677,8 @@ $lng['gameserver']['server_id']='Server ID';
 $lng['gameserver']['game']='Game';
 $lng['gameserver']['select']['game']='Bitte Game auswählen';
 $lng['gameserver']['games']='Games';
+$lng['gameserver']['start_server']='Server sofort starten?';
+$lng['gameserver']['start_server']['description']='Nach der Installation das Gameserver wird dieser auf Wunsch auch sofort gestartet.';
 
 //Aaron
 $lng['error']['updateserveroffline'] = 'Der Update-Server ist momentan nicht erreichbar. Es kann nicht nachgeprüft werden, ob es eine neuere Version gibt.';

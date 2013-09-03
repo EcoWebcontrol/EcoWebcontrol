@@ -1,3 +1,4 @@
+$header
 <div class="modal-header" dc="dialog">
     <a class="close" data-dismiss="modal">&times;</a>
   <h3>{$lng['success']['success']}</h3>
@@ -8,3 +9,4 @@
 			<br /><a class="btn" href="{$redirect_url}">{$lng['success']['clickheretocontinue']}</a>
 		</if>
 </div>
+$footer

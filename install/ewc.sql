@@ -4,9 +4,20 @@ CREATE TABLE  `game_server` (
   `serverid` int(11) NOT NULL,
   `game` text NOT NULL,
   `start` text NOT NULL,
-  `para` text NOT NULL
+  `status` int(11) NOT NULL,
+  `para` text NOT NULL,
+  PRIMARY KEY (`serverid`)
 ) ENGINE=MyISAM CHARSET=utf8 COLLATE=utf8_general_ci;
 
+DROP TABLE IF EXISTS `game_games`;
+CREATE TABLE IF NOT EXISTS `game_games` (
+  `game` text NOT NULL,
+  `version` text NOT NULL,
+  `para` text NOT NULL,
+  `id` int(11) NOT NULL,
+  `props` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM CHARSET=utf8 COLLATE=utf8_general_ci;
 
 DROP TABLE IF EXISTS `api_multiserver`;
 

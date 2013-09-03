@@ -46,6 +46,7 @@ function includeFunctions($dirname)
 function __autoload($classname)
 {
 	global $libdirname, $theme;
+
 	findIncludeClass($libdirname . '/classes/', $classname);
 }
 
