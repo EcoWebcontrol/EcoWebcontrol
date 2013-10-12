@@ -1593,14 +1593,6 @@ if($page == 'customers'
 					$result['aps_packages'] = '';
 				}
 
-				/*
-				$createstdsubdomain = makeyesno('createstdsubdomain', '1', '0', (($result['standardsubdomain'] != '0') ? '1' : '0'));
-				$phpenabled = makeyesno('phpenabled', '1', '0', $result['phpenabled']);
-				$perlenabled = makeyesno('perlenabled', '1', '0', $result['perlenabled']);
-				$deactivated = makeyesno('deactivated', '1', '0', $result['deactivated']);
-				$email_imap = makeyesno('email_imap', '1', '0', $result['imap']);
-				$email_pop3 = makeyesno('email_pop3', '1', '0', $result['pop3']);
-				*/
 				$backup_allowed = makeyesno('backup_allowed', '1', '0', $result['backup_allowed']);
 				$result = htmlentities_array($result);
 
